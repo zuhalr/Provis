@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'list_dosen.dart';
 import 'screen_ketiga.dart';
+import 'list_kamda.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,6 +52,17 @@ class MyHome extends StatelessWidget {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return ScreenKetiga();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('List KAMDA'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ListKAMDA(title: '', image: '',);
                       }));
                     }),
               ),
