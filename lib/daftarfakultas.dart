@@ -1,61 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'CustomCard.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyApp(),
-  ));
-}
-
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-//membuat class custom card
-class CustomCard extends StatelessWidget {
-  //konstruktor
-  CustomCard({required this.title, required this.image});
-  String title;
-  String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10),
-      child: Card(
-        elevation: 5,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 200,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(
-                        image,
-                      ),
-                      fit: BoxFit.cover)),
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                primary: Colors.black,
-                textStyle: const TextStyle(fontSize: 16),
-              ),
-              onPressed: () {},
-              child: Text(title),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _MyAppState extends State<MyApp> {
+class Daftarfakultas extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,10 +46,8 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       body: GridView.count(
-        //widget yang akan ditampilkan dalam 1 baris adalah 2
         crossAxisCount: 2,
         children: [
-          //saya membuat custom card di bawah agar kodingan tidak terlalu panjang
           CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
           CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
           CustomCard(title: "FPIPS", image: "assets/images/fpips.jpg"),
