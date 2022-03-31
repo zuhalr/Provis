@@ -4,7 +4,6 @@ import 'fasilitas.dart';
 import 'daftarfakultas.dart';
 import 'profil_dosen.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -15,10 +14,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primarySwatch: Colors.red),
-      title: 'UPI DATA',
-      home: MyHome()
-      );
+        theme: ThemeData(primarySwatch: Colors.red),
+        title: 'UPI DATA',
+        home: MyHome());
   }
 }
 
@@ -53,7 +51,7 @@ class MyHome extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return Fasilitas();
+                        return Daftarfakultas();
                       }));
                     }),
               ),
