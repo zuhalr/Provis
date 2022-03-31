@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
+import 'profil_dosen.dart';
 
 
 void main() {
@@ -64,6 +65,17 @@ class MyHome extends StatelessWidget {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return Fasilitas();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('Profil Dosen'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ProfilDosen();
                       }));
                     }),
               ),
