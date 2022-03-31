@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'list_dosen.dart';
-import 'screen_ketiga.dart';
+import 'fasilitas.dart';
+import 'daftarfakultas.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -46,11 +48,22 @@ class MyHome extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(5), //20 pixel ke semua arah
                 child: ElevatedButton(
-                    child: Text('Ke screen Ketiga'),
+                    child: Text('DaftarFakultas'),
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return ScreenKetiga();
+                        return Fasilitas();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('Fasilitas'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return Fasilitas();
                       }));
                     }),
               ),
