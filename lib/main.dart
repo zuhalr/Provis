@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screen_kedua.dart';
+import 'list_dosen.dart';
 import 'screen_ketiga.dart';
 
 void main() {
@@ -11,7 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Hello App', home: MyHome());
+    return MaterialApp(
+      theme: ThemeData(primarySwatch: Colors.red),
+      title: 'UPI DATA',
+      home: MyHome()
+      );
   }
 }
 
@@ -31,11 +35,11 @@ class MyHome extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(5), //20 pixel ke semua arah
                 child: ElevatedButton(
-                    child: Text('Ke screen Kedua'),
+                    child: Text('List Dosen Prodi'),
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return ScreenKedua();
+                        return ListDosen();
                       }));
                     }),
               ),
