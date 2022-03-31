@@ -22,73 +22,88 @@ class ListDosen extends StatelessWidget {
       body: ListView(
         
         children: [
-          TextFormField(
-            cursorColor: Theme.of(context).cursorColor,
-            initialValue: 'Input text',
-            maxLength: 50,
-            decoration: const InputDecoration(
-              icon: Icon(Icons.search),
-              labelText: 'Pencarian',
-              labelStyle: TextStyle(
-                color: Color(0xFF6200EE),
-              ),
-              helperText: 'Masukkan Nama Dosen',
-              // suffixIcon: Icon(
-              //   Icons.check_circle,
-              // ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF6200EE)),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: TextFormField(
+              cursorColor: Theme.of(context).cursorColor,
+              initialValue: 'Input text',
+              maxLength: 50,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.search),
+                labelText: 'Pencarian',
+                labelStyle: TextStyle(
+                  color: Color(0xFF6200EE),
+                ),
+                helperText: 'Masukkan Nama Dosen',
+                // suffixIcon: Icon(
+                //   Icons.check_circle,
+                // ),
+                border: OutlineInputBorder(),
               ),
             ),
           ),
-          Text('Urut Berdasarkan :'),
-          DropdownButton(
-            
-              // Initial Value
-              value: dropdownvalue,
-                
-              // Down Arrow Icon
-              icon: const Icon(Icons.keyboard_arrow_down),    
-                
-              // Array list of items
-              items: items.map((String items) {
-                return DropdownMenuItem(
-                  value: items,
-                  child: Text(items),
-                );
-              }).toList(),
-              onChanged: (String? value) {  },
-          ),
-          Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
               children: [
-                ListTile(
-                  // leading: Icon(Icons.arrow_drop_down_circle),
-                  leading: Image.asset('assets/images/profile.png'),
-                  title: const Text('John Doe'),
-                  subtitle: Text(
-                    '02240786xx',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
+                Text('Urut Berdasarkan :'),
+                DropdownButton(
+                  
+                    // Initial Value
+                    value: dropdownvalue,
+                      
+                    // Down Arrow Icon
+                    icon: const Icon(Icons.keyboard_arrow_down),    
+                      
+                    // Array list of items
+                    items: items.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {  },
                 ),
               ],
             ),
           ),
-          Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                ListTile(
-                  // leading: Icon(Icons.arrow_drop_down_circle),
-                  leading: Image.asset('assets/images/profile.png'),
-                  title: const Text('John Doe'),
-                  subtitle: Text(
-                    '02240786xx',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
+          
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  ListTile(
+                    // leading: Icon(Icons.arrow_drop_down_circle),
+                    leading: Image.asset('assets/images/profile.png'),
+                    title: const Text('John Doe'),
+                    subtitle: Text(
+                      '02240786xx',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              clipBehavior: Clip.antiAlias,
+              child: Column(
+                children: [
+                  ListTile(
+                    // leading: Icon(Icons.arrow_drop_down_circle),
+                    leading: Image.asset('assets/images/profile.png'),
+                    title: const Text('John Doe'),
+                    subtitle: Text(
+                      '02240786xx',
+                      style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
