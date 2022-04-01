@@ -8,9 +8,7 @@ class ListPrestasi extends StatelessWidget {
       appBar: AppBar(
         title: const Text('List Prestasi'),
       ),
-      body: Center(
-            child: Column(
-          mainAxisSize: MainAxisSize.min,
+     body: ListView(
           children: [
             Card(
               clipBehavior: Clip.antiAlias,
@@ -79,7 +77,7 @@ class ListPrestasi extends StatelessWidget {
               ),
             ),
           ],
-        )), //column center
+      ), //column center
     );
   }
 }
