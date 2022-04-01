@@ -8,13 +8,6 @@ class Daftarfakultas extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          tooltip: 'Back',
-          onPressed: () {
-            // kalau ditap
-          },
-        ),
         title: Center(
           child: Text("Daftar Fakultas",
               style: const TextStyle(
