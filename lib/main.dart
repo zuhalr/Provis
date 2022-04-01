@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provis/list_prestasi.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
@@ -74,6 +75,17 @@ class MyHome extends StatelessWidget {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return ProfilDosen();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('List Prestasi'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ListPrestasi();
                       }));
                     }),
               ),
