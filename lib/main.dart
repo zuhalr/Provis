@@ -28,7 +28,7 @@ class MyHome extends StatelessWidget {
     return Center(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Hello'),
+          title: const Text('List Page'),
         ),
         body: Center(
           child: Column(
