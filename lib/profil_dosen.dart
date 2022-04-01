@@ -7,6 +7,7 @@ class ProfilDosen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profil Dosen'),
+        backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
       body: ListView(
         children:[

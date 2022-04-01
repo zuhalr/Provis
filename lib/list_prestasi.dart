@@ -7,6 +7,7 @@ class ListPrestasi extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Prestasi'),
+        backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
      body: ListView(
           children: [

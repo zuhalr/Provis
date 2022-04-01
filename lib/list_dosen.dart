@@ -17,6 +17,7 @@ class ListDosen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('List Dosen'),
+        backgroundColor: const Color.fromARGB(255, 143, 5, 5),
         centerTitle: true,
       ),
       body: ListView(

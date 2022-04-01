@@ -15,7 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primarySwatch: Colors.red),
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromARGB(255, 143, 5, 5), // background (button) color
+              onPrimary: Colors.white, // foreground (text) color
+            ),
+          ),
+        ),
         title: 'UPI DATA',
         home: MyHome());
   }
@@ -28,6 +36,7 @@ class MyHome extends StatelessWidget {
     return Center(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 143, 5, 5),
           title: const Text('List Page'),
         ),
         body: Center(

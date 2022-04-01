@@ -7,6 +7,7 @@ class Fasilitas extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Fasilitas'),
+        backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
       body: ListView(
         children:[
