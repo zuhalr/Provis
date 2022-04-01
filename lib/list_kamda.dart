@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'CustomCard.dart';
 
-class _list_kamda extends StatelessWidget {
+class ListKamda extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +52,10 @@ class _list_kamda extends StatelessWidget {
           //saya membuat custom card di bawah agar kodingan tidak terlalu panjang
           CustomCard(title: "CIBIRU", image: "assets/images/CIBIRU.jpeg"),
           CustomCard(title: "SUMEDANG", image: "assets/images/SUMEDANG.jpg"),
-          CustomCard(title: "TASIKMALAYA", image: "assets/images/TASIKMALAYA.jpg"),
-          CustomCard(title: "PURWAKARTA", image: "assets/images/PURWAKARTA.jpg"),
+          CustomCard(
+              title: "TASIKMALAYA", image: "assets/images/TASIKMALAYA.jpg"),
+          CustomCard(
+              title: "PURWAKARTA", image: "assets/images/PURWAKARTA.jpg"),
           CustomCard(title: "SERANG", image: "assets/images/SERANG.jpg"),
         ],
       ),

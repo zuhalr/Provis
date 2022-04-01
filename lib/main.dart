@@ -4,6 +4,7 @@ import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
 import 'profil_dosen.dart';
+import 'list_kamda.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.red,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              primary: Color.fromARGB(255, 143, 5, 5), // background (button) color
+              primary:
+                  Color.fromARGB(255, 143, 5, 5), // background (button) color
               onPrimary: Colors.white, // foreground (text) color
             ),
           ),
@@ -57,7 +59,7 @@ class MyHome extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(5), //20 pixel ke semua arah
                 child: ElevatedButton(
-                    child: Text('DaftarFakultas'),
+                    child: Text('Daftar Fakultas'),
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
@@ -95,6 +97,17 @@ class MyHome extends StatelessWidget {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return ListPrestasi();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('Daftar Kampus Daerah'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ListKamda();
                       }));
                     }),
               ),
