@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home/theme.dart';
+import 'package:provis/theme.dart';
 
 class CustomCheckbox extends StatefulWidget {
   const CustomCheckbox({Key? key}) : super(key: key);
