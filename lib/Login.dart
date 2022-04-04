@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provis/home.dart';
-import 'package:provis/theme.dart';
-import 'package:provis/custom_checkbox.dart';
+import 'package:provis/Widgets/theme.dart';
+import 'package:provis/Widgets/custom_checkbox.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
