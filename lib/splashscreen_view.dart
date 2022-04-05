@@ -32,16 +32,10 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 141, 7, 7),
-      appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 141, 7, 7),
-          title: Center(
-            child: Text('UPI DATA'),
-          )),
       body: Center(
         child: Image.asset(
           "assets/images/upi.png",
-          width: 200,
-          height: 88,
+          height: 150,
         ),
       ),
     );

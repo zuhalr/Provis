@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'App Fluterku',
+      title: 'UPI DATA',
       home: SplashScreenPage(),
     );
   }

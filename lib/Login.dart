@@ -20,18 +20,19 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 143, 21, 21),
+      backgroundColor: primary,
       body: Center(
         child: Padding(
           padding: EdgeInsets.fromLTRB(24, 40, 24, 0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/images/upi.png',
+                    height: 100,
                   )
                 ],
               ),
@@ -45,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: 80,
               ),
               Form(
                   child: Column(
@@ -53,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     decoration: BoxDecoration(
                         color: textWhiteGrey,
-                        borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                       decoration: InputDecoration(
                           hintText: 'Username',
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
                   Container(
                     decoration: BoxDecoration(
                         color: textWhiteGrey,
-                        borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(10)),
                     child: TextFormField(
                       obscureText: !passwordVisible,
                       decoration: InputDecoration(
@@ -89,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               )),
               SizedBox(
-                height: 12,
+                height: 30,
               ),
               Container(
                 height: 80,
@@ -98,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.all(20),
                   //20 pixel ke semua arah
                   child: ElevatedButton(
-                      style: TextButton.styleFrom(),
+                      style: TextButton.styleFrom(backgroundColor: primaryBlue),
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
