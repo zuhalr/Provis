@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provis/home.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/Widgets/custom_checkbox.dart';
+import 'package:provis/home_view.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Navigator.of(context)
                             .push(MaterialPageRoute(builder: (context) {
-                          return MyApp();
+                          return HomePage();
                         }));
                       }),
                 ),

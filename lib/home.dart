@@ -5,6 +5,7 @@ import 'fasilitas.dart';
 import 'daftarfakultas.dart';
 import 'profil_dosen.dart';
 import 'list_kamda.dart';
+import 'home_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -108,6 +109,17 @@ class MyHome extends StatelessWidget {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         return ListKamda();
+                      }));
+                    }),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5), //20 pixel ke semua arah
+                child: ElevatedButton(
+                    child: Text('Slider'),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return HomePage();
                       }));
                     }),
               ),
