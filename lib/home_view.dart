@@ -52,31 +52,55 @@ final List<Widget> imageSliders = imgList
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var data = [
+    var aktif = [
       Mhs("2018", 4150),
       Mhs("2019", 8110),
       Mhs("2020", 7150),
       Mhs("2021", 7770),
       Mhs("2022", 6280),
     ];
+    var nonaktif = [
+      Mhs("2018", 450),
+      Mhs("2019", 610),
+      Mhs("2020", 550),
+      Mhs("2021", 770),
+      Mhs("2022", 680),
+    ];
     var series = [
       charts.Series(
           domainFn: (Mhs mhs, _) => mhs.years,
           measureFn: (Mhs mhs, _) => mhs.number,
-          id: 'Mahasiswa',
-          data: data),
+          id: 'Mahasiswa Aktif',
+          data: aktif,
+          labelAccessorFn: (Mhs mhs, _) => ' ${mhs.number.toString()}'),
+      charts.Series(
+          domainFn: (Mhs mhs, _) => mhs.years,
+          measureFn: (Mhs mhs, _) => mhs.number,
+          id: 'Mahasiswa NonAktif',
+          data: nonaktif,
+          labelAccessorFn: (Mhs mhs, _) => ' ${mhs.number.toString()}'),
     ];
-    var chart = charts.BarChart(series);
+    var chart = charts.BarChart(
+      series,
+      barRendererDecorator: charts.BarLabelDecorator<String>(),
+      barGroupingType: charts.BarGroupingType.grouped,
+      behaviors: [new charts.SeriesLegend()],
+    );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primary,
-        title: Center(
-          child: Text("UPI DATA",
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Image.asset(
+            'assets/images/upi.png',
+            height: 25,
+          ),
+          Text("UPI DATA",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
-        ),
+        ]),
         actions: <Widget>[
           IconButton(
             icon: new Icon(Icons.person, color: colorLight),
@@ -88,7 +112,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: primary,
+      backgroundColor: colorLight,
       body: Column(children: <Widget>[
         CarouselSlider(
           options: CarouselOptions(
@@ -103,7 +127,7 @@ class HomePage extends StatelessWidget {
           child: Column(children: <Widget>[
             Text(
               "Jumlah Mahasiswa",
-              style: TextStyle(fontSize: 20, color: colorLight),
+              style: TextStyle(fontSize: 20, color: textBlack),
             ),
             SizedBox(height: 250, child: chart),
           ]),
