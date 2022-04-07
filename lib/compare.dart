@@ -46,12 +46,14 @@ class Compare extends StatelessWidget {
           ),
         ),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
-          CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
-        ],
+      body: Center(
+        child: GridView.count(
+          crossAxisCount: 2,
+          children: [
+            CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
+            CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
