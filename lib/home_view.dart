@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
+import 'package:provis/compare.dart';
 import 'package:provis/profil_dosen.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
@@ -177,7 +178,12 @@ class HomePage extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.compare),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Compare();
+                  }));
+                },
               ),
             ),
             Expanded(

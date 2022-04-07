@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
-import 'package:provis/compare.dart';
+
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
 
-class Daftarfakultas extends StatelessWidget {
+class Compare extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Daftar Fakultas",
+          child: Text("Compare",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -51,26 +51,6 @@ class Daftarfakultas extends StatelessWidget {
         children: [
           CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
           CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
-          CustomCard(title: "FPIPS", image: "assets/images/fpips.jpg"),
-          CustomCard(title: "FPBS", image: "assets/images/fpbs.jpg"),
-          CustomCard(title: "FPSD", image: "assets/images/fpsd.jpg"),
-          CustomCard(title: "FPTK", image: "assets/images/fptk.jpg"),
-          CustomCard(title: "FPOK", image: "assets/images/fpok.jpg"),
-          CustomCard(title: "FPEB", image: "assets/images/fpeb.jpg"),
-          CustomCard(
-              title: "Kampus Daerah Cibiru",
-              image: "assets/images/CIBIRU.jpeg"),
-          CustomCard(
-              title: "Kampus Daerah Sumedang",
-              image: "assets/images/SUMEDANG.jpg"),
-          CustomCard(
-              title: "Kampus Daerah Tasikmalaya",
-              image: "assets/images/TASIKMALAYA.jpg"),
-          CustomCard(
-              title: "Kampus Daerah Purwakarta",
-              image: "assets/images/PURWAKARTA.jpg"),
-          CustomCard(
-              title: "Kampus Daerah Serang", image: "assets/images/SERANG.jpg"),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
@@ -117,12 +97,7 @@ class Daftarfakultas extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.compare),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Compare();
-                  }));
-                },
+                onPressed: () {},
               ),
             ),
             Expanded(
