@@ -3,112 +3,191 @@ import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
-
+import 'package:provis/compare.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
 
-class Compare extends StatelessWidget {
+class Addprestasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Compare",
+          child: Text("Tambah Prestasi",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
         ),
-        bottom: AppBar(
-          backgroundColor: Colors.white,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Cari',
-                  prefixIcon: IconButton(
-                    icon: const Icon(Icons.search),
-                    tooltip: 'search',
-                    onPressed: () {
-                      // kalau ditap
-                    },
+      ),
+      backgroundColor: colorLight,
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(24, 40, 24, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Form(
+                  child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Jenis Prestasi (Kerjasama / Prestasi)',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
                   ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Nama Perlombaan / Kerjasama',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Tingkat',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Tahun',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Juara',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Ketua Tim',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Anggota 1',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: textWhiteGrey,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: 'Anggota 2',
+                          hintStyle: heading6.copyWith(color: textGrey),
+                          border:
+                              OutlineInputBorder(borderSide: BorderSide.none)),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 12,
+                  ),
+                ],
+              )),
+              SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 80,
+                width: 500,
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  //20 pixel ke semua arah
+                  child: ElevatedButton(
+                      style: TextButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 143, 5, 5)),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Tambah",
+                          style: heading5,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return HomePage();
+                        }));
+                      }),
                 ),
               ),
-            ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
-        ),
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
-          CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
-        ],
-      ),
-      bottomNavigationBar: BottomAppBar(
-        color: primary,
-        child: new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              //Daftar Fakultas
-              child: IconButton(
-                color: colorLight,
-                icon: Icon(Icons.home_work),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarfakultas();
-                  }));
-                },
-              ),
-            ),
-            Expanded(
-              //Dashboard
-              child: IconButton(
-                color: colorLight,
-                icon: Icon(Icons.show_chart),
-                onPressed: () {},
-              ),
-            ),
-            Expanded(
-              //Home
-              child: IconButton(
-                color: colorLight,
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return HomePage();
-                  }));
-                },
-              ),
-            ),
-            Expanded(
-              //Menu Compare
-              child: IconButton(
-                color: colorLight,
-                icon: Icon(Icons.compare),
-                onPressed: () {},
-              ),
-            ),
-            Expanded(
-              //Menu kaprodi (Edit Data Prodi)
-              child: IconButton(
-                color: colorLight,
-                icon: Icon(Icons.person),
-                onPressed: () {},
-              ),
-            ),
-          ],
         ),
       ),
     );
