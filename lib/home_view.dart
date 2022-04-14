@@ -158,12 +158,7 @@ class HomePage extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.show_chart),
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
-                  }));
-                },
+                onPressed: () {},
               ),
             ),
             Expanded(
@@ -197,7 +192,12 @@ class HomePage extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.person),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                  }));
+                },
               ),
             ),
           ],

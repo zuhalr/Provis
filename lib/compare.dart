@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
-
+import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
@@ -393,7 +393,12 @@ class Compare extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.compare),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Compare();
+                  }));
+                },
               ),
             ),
             Expanded(
@@ -401,7 +406,12 @@ class Compare extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.person),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                  }));
+                },
               ),
             ),
           ],

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
@@ -9,6 +9,7 @@ import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
+import 'package:provis/addprestasi.dart';
 
 class Daftarfakultas extends StatelessWidget {
   @override
@@ -130,7 +131,12 @@ class Daftarfakultas extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.person),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                  }));
+                },
               ),
             ),
           ],

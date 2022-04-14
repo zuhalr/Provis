@@ -25,7 +25,7 @@ class Addprestasi extends StatelessWidget {
         ),
       ),
       backgroundColor: colorLight,
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(24, 40, 24, 0),
           child: Column(
