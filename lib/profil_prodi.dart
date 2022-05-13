@@ -11,14 +11,14 @@ import 'profil_dosen.dart';
 import 'home_view.dart';
 import 'package:provis/addprestasi.dart';
 
-class Daftarprodi extends StatelessWidget {
+class Profilprodi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Daftar Prodi",
+          child: Text("Profil Prodi",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -47,27 +47,32 @@ class Daftarprodi extends StatelessWidget {
           ),
         ),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          CustomCard(title: "Matematika", image: "assets/images/fpmipa.jpg"),
-          CustomCard(
-              title: "Pendidikan Matematika", image: "assets/images/FIP.jpg"),
-          CustomCard(title: "Fisika", image: "assets/images/fpips.jpg"),
-          CustomCard(
-              title: "Pendidikan Fisika", image: "assets/images/fpbs.jpg"),
-          CustomCard(title: "Kimia", image: "assets/images/fpsd.jpg"),
-          CustomCard(
-              title: "Pendidikan Kimia", image: "assets/images/fptk.jpg"),
-          CustomCard(title: "Biologi", image: "assets/images/fpok.jpg"),
-          CustomCard(
-              title: "Pendidikan Biologi", image: "assets/images/fpeb.jpg"),
-          CustomCard(title: "Ilmu Komputer", image: "assets/images/fpok.jpg"),
-          CustomCard(
-              title: "Pendidikan Ilmu Komputer",
-              image: "assets/images/fpeb.jpg"),
-          CustomCard(title: "IPSE", image: "assets/images/fpeb.jpg"),
-        ],
+      body: Container(
+        color: Color.fromARGB(255, 143, 5, 5),
+        child: GridView.count(
+          crossAxisCount: 2,
+          children: [
+            Card(child: Container(
+                  child: Text(
+                '''
+              Jumlah Mahasiswa
+              Jumlah Dosen
+              Jenjang
+              Rasio Dosen/Mahasiswa
+              Rata-rata waktu kelulusan"
+              Riwayat Kerjasama''',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),),
+            Card(child: Container(child: Text('''
+                  500
+                  25
+                  S1
+                  1:20
+                  4.5 tahun
+                  2020 - Fasilkom UI
+                  2021 - STEI ITB''')),),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
