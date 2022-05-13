@@ -9,6 +9,7 @@ import 'package:provis/profil_dosen.dart';
 import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
+import 'home.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 
@@ -158,7 +159,12 @@ class HomePage extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.show_chart),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return MyHome(); //sementara jadi halaman list page yang belum nyambung          
+                  }));
+                },
               ),
             ),
             Expanded(
