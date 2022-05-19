@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/dashboard.dart';
+import 'package:provis/editprodi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
@@ -12,6 +14,7 @@ import 'list_dosen.dart';
 import 'home.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
+import 'dashboard.dart';
 
 final List<String> imgList = [
   'assets/images/isola.jpg',
@@ -162,7 +165,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MyHome(); //sementara jadi halaman list page yang belum nyambung          
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
                   }));
                 },
               ),
@@ -201,7 +204,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                    return EditProdi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),
