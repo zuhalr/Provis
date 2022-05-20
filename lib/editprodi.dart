@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
+import 'package:provis/addprestasi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
 import 'daftarfakultas.dart';
@@ -132,25 +133,42 @@ class EditProdi extends StatelessWidget {
               Container(
                 height: 80,
                 width: 500,
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  //20 pixel ke semua arah
-                  child: ElevatedButton(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Color.fromARGB(255, 143, 5, 5)),
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Update",
-                          style: heading5,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                        style: TextButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 143, 5, 5)),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Update",
+                            style: heading5,
+                          ),
                         ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return HomePage();
-                        }));
-                      }),
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return EditProdi();
+                          }));
+                        }),
+                    ElevatedButton(
+                        style: TextButton.styleFrom(
+                            backgroundColor: Color.fromARGB(255, 143, 5, 5)),
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Tambahkan Prestasi",
+                            style: heading5,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return Addprestasi();
+                          }));
+                        }),
+                  ],
                 ),
               ),
               SizedBox(

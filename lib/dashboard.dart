@@ -1,62 +1,70 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/dashboard.dart';
+import 'package:provis/editprodi.dart';
+import 'package:provis/profil_dosen.dart';
+import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
+import 'home.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
+import 'dashboard.dart';
 import 'home_view.dart';
 
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: primary,
-          title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Image.asset(
-                  'assets/images/upi.png',
-                  height: 25,
-                ),
-                Text("UPI DATA",
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white)),
-              ]),
-          actions: <Widget>[
-            IconButton(
-              icon: new Icon(Icons.person, color: colorLight),
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return ProfilDosen();
-                }));
-              },
-            ),
-          ],
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: primary,
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Image.asset(
+            'assets/images/upi.png',
+            height: 25,
+          ),
+          Text("UPI DATA",
+              style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)),
+        ]),
+        actions: <Widget>[
+          IconButton(
+            icon: new Icon(Icons.person, color: colorLight),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return ProfilDosen();
+              }));
+            },
+          ),
+        ],
+      ),
+      body: Column(children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(12.0),
         ),
-        body: SafeArea(
-            child: Column(
+        Text(
+          "Dashboard",
+          style: TextStyle(
+              color: Colors.black, fontSize: 28.0, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          "Summary Update",
+          style: TextStyle(
+              color: Colors.black, fontSize: 28.0, fontWeight: FontWeight.bold),
+        ),
+        Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(12),
-              child: Text(
-                "Dashboard \nSummary Updates",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold),
-              ),
             ),
             Padding(
               padding: const EdgeInsets.all(12.0),
@@ -229,11 +237,129 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+                    Container(
+                      height: 80,
+                      width: 500,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor:
+                                      Color.fromARGB(255, 143, 5, 5)),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Daftar Fakultas",
+                                  style: heading5,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return Daftarfakultas();
+                                }));
+                              }),
+                          ElevatedButton(
+                              style: TextButton.styleFrom(
+                                  backgroundColor:
+                                      Color.fromARGB(255, 143, 5, 5)),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Compare",
+                                  style: heading5,
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .push(MaterialPageRoute(builder: (context) {
+                                  return Compare();
+                                }));
+                              }),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
             )
           ],
-        )));
+        ),
+      ]),
+      bottomNavigationBar: BottomAppBar(
+        color: primary,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              //Daftar Fakultas
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home_work),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Daftarfakultas();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Dashboard
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Home
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu Compare
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.compare),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Compare();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu kaprodi (Edit Data Prodi)
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.person),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return EditProdi(); //ganti aja, ini cuman mau debug doang
+                  }));
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

@@ -10,6 +10,8 @@ import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
 import 'package:provis/addprestasi.dart';
+import 'package:provis/editprodi.dart';
+import 'dashboard.dart';
 
 class Daftarfakultas extends StatelessWidget {
   @override
@@ -97,7 +99,12 @@ class Daftarfakultas extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.show_chart),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
+                  }));
+                },
               ),
             ),
             Expanded(
@@ -134,7 +141,7 @@ class Daftarfakultas extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                    return EditProdi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),
