@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/daftarprodi.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
 import 'package:provis/profil_dosen.dart';
@@ -204,7 +205,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return EditProdi(); //ganti aja, ini cuman mau debug doang
+                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),

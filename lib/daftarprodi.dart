@@ -4,6 +4,7 @@ import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/profil_prodi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
@@ -50,23 +51,29 @@ class Daftarprodi extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2,
         children: [
-          CustomCard(title: "Matematika", image: "assets/images/fpmipa.jpg"),
+          CustomCard(title: "Matematika", image: "assets/images/mat.jpg"),
+          IconButton(
+            color: colorLight,
+            icon: Icon(Icons.home_work),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return Profilprodi();
+              }));
+            },
+          ),
           CustomCard(
-              title: "Pendidikan Matematika", image: "assets/images/FIP.jpg"),
-          CustomCard(title: "Fisika", image: "assets/images/fpips.jpg"),
+              title: "Pendidikan Matematika",
+              image: "assets/images/pendmat.jpg"),
+          CustomCard(title: "Fisika", image: "assets/images/fos.jpg"),
           CustomCard(
-              title: "Pendidikan Fisika", image: "assets/images/fpbs.jpg"),
-          CustomCard(title: "Kimia", image: "assets/images/fpsd.jpg"),
+              title: "Pendidikan Fisika", image: "assets/images/pendfis.jpg"),
+          CustomCard(title: "Biologi", image: "assets/images/bio.jpg"),
           CustomCard(
-              title: "Pendidikan Kimia", image: "assets/images/fptk.jpg"),
-          CustomCard(title: "Biologi", image: "assets/images/fpok.jpg"),
-          CustomCard(
-              title: "Pendidikan Biologi", image: "assets/images/fpeb.jpg"),
-          CustomCard(title: "Ilmu Komputer", image: "assets/images/fpok.jpg"),
+              title: "Pendidikan Biologi", image: "assets/images/pendbio.jpg"),
+          CustomCard(title: "Ilmu Komputer", image: "assets/images/kom.jpg"),
           CustomCard(
               title: "Pendidikan Ilmu Komputer",
-              image: "assets/images/fpeb.jpg"),
-          CustomCard(title: "IPSE", image: "assets/images/fpeb.jpg"),
+              image: "assets/images/pendkom.jpg"),
         ],
       ),
       bottomNavigationBar: BottomAppBar(

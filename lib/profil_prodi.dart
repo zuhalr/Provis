@@ -48,32 +48,111 @@ class Profilprodi extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: Color.fromARGB(255, 143, 5, 5),
         child: GridView.count(
           crossAxisCount: 2,
           children: [
-            Card(child: Container(
-                  child: Text(
-                '''
-              Jumlah Mahasiswa
-              Jumlah Dosen
-              Jenjang
-              Rasio Dosen/Mahasiswa
-              Rata-rata waktu kelulusan"
-              Riwayat Kerjasama''',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              )),),
-            Card(child: Container(child: Text('''
-                  500
-                  25
-                  S1
-                  1:20
-                  4.5 tahun
-                  2020 - Fasilkom UI
-                  2021 - STEI ITB''')),),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Jumlah Mahasiswa')),
+                        Container(
+                            padding: EdgeInsets.all(14), child: Text('500')),
+                      ])),
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Jumlah Dosen')),
+                        Container(
+                            padding: EdgeInsets.all(14), child: Text('25')),
+                      ])),
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Jenjang')),
+                        Container(
+                            padding: EdgeInsets.all(14), child: Text('S1')),
+                      ])),
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Rasio Dosen/Mahasiswa')),
+                        Container(
+                            padding: EdgeInsets.all(14), child: Text('1 : 20')),
+                      ])),
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Rata-rata waktu lulus')),
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('4.5 tahun')),
+                      ])),
+              Container(
+                  padding: EdgeInsets.all(14),
+                  color: Color.fromARGB(255, 143, 5, 5),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('Riwayat Kerjasama')),
+                        Container(
+                            padding: EdgeInsets.all(14),
+                            child: Text('''2020 - Fasilkom UI
+                  2021 - STEI ITB''')),
+                      ])),
+            ]),
           ],
         ),
       ),
+      //       Container(
+      //             child: Text(
+      //           '''
+      //         Jumlah Mahasiswa
+      //         Jumlah Dosen
+      //         Jenjang
+      //         Rasio Dosen/Mahasiswa
+      //         Rata-rata waktu kelulusan"
+      //         Riwayat Kerjasama''',
+      //           style: TextStyle(fontWeight: FontWeight.bold),
+      //         )),),
+      //       Card(child: Container(child: Text('''
+      //             500
+      //             25
+      //             S1
+      //             1:20
+      //             4.5 tahun
+      //             2020 - Fasilkom UI
+      //             2021 - STEI ITB''')),),
+      //     ],
+      //   ),
+      // ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
         child: new Row(
