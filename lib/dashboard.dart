@@ -46,22 +46,27 @@ class Dashboard extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(children: <Widget>[
+      body: ListView(children: <Widget>[
         Padding(
           padding: EdgeInsets.all(12.0),
         ),
         Text(
           "Dashboard",
+          textAlign: TextAlign.center,
           style: TextStyle(
-              color: Colors.black, fontSize: 28.0, fontWeight: FontWeight.bold),
+            color: Colors.black,
+            fontSize: 28.0,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         Text(
           "Summary Update",
+          textAlign: TextAlign.center,
           style: TextStyle(
               color: Colors.black, fontSize: 28.0, fontWeight: FontWeight.bold),
         ),
         Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(12),
@@ -87,7 +92,7 @@ class Dashboard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Image.asset(
-                                "assets/todo.png",
+                                "assets/images/todo.png",
                                 width: 64.0,
                               ),
                               SizedBox(
@@ -128,7 +133,7 @@ class Dashboard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Image.asset(
-                                "assets/note.png",
+                                "assets/images/note.png",
                                 width: 64.0,
                               ),
                               SizedBox(
@@ -155,6 +160,25 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(12),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: Wrap(
+                  spacing: 20,
+                  runSpacing: 20.0,
+                  children: <Widget>[
                     SizedBox(
                       width: 160.0,
                       height: 160.0,
@@ -169,7 +193,7 @@ class Dashboard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Image.asset(
-                                "assets/calendar.png",
+                                "assets/images/calendar.png",
                                 width: 64.0,
                               ),
                               SizedBox(
@@ -210,7 +234,7 @@ class Dashboard extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               Image.asset(
-                                "assets/settings.png",
+                                "assets/images/settings.png",
                                 width: 64.0,
                               ),
                               SizedBox(
@@ -237,6 +261,25 @@ class Dashboard extends StatelessWidget {
                         )),
                       ),
                     ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(12),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Center(
+                child: Wrap(
+                  spacing: 20,
+                  runSpacing: 20.0,
+                  children: <Widget>[
                     Container(
                       height: 80,
                       width: 500,

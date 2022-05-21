@@ -4,6 +4,7 @@ import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/profil_prodi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
@@ -52,7 +53,10 @@ class Daftarfakultas extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 2,
         children: [
-          CustomCard(title: "FPMIPA", image: "assets/images/fpmipa.jpg"),
+          CustomCard(
+            title: "FPMIPA",
+            image: "assets/images/fpmipa.jpg",
+          ),
           CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
           CustomCard(title: "FPIPS", image: "assets/images/fpips.jpg"),
           CustomCard(title: "FPBS", image: "assets/images/fpbs.jpg"),

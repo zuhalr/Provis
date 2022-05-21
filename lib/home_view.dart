@@ -120,7 +120,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       backgroundColor: colorLight,
-      body: Column(children: <Widget>[
+      body: ListView(children: <Widget>[
         CarouselSlider(
           options: CarouselOptions(
             autoPlay: true,
@@ -179,7 +179,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return HomePage();
+                    return MyHome();
                   }));
                 },
               ),

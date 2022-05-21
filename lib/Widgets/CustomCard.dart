@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provis/profil_prodi.dart';
 
 class CustomCard extends StatelessWidget {
   //konstruktor
@@ -29,7 +30,12 @@ class CustomCard extends StatelessWidget {
                 primary: Colors.black,
                 textStyle: const TextStyle(fontSize: 16),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return Profilprodi();
+                }));
+              },
               child: Text(title),
             ),
           ],

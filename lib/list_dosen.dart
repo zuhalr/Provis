@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provis/profil_dosen.dart';
 
 class ListDosen extends StatelessWidget {
   // Initial Selected Value
-  String dropdownvalue = '↑ Nama';   
-  
+  String dropdownvalue = '↑ Nama';
+
   // List of items in our dropdown menu
-  var items = [    
+  var items = [
     '↑ Nama',
     '↓ Nama',
     '↑ Jabatan',
@@ -21,7 +22,6 @@ class ListDosen extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView(
-        
         children: [
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -49,26 +49,24 @@ class ListDosen extends StatelessWidget {
               children: [
                 Text('Urut Berdasarkan :'),
                 DropdownButton(
-                  
-                    // Initial Value
-                    value: dropdownvalue,
-                      
-                    // Down Arrow Icon
-                    icon: const Icon(Icons.keyboard_arrow_down),    
-                      
-                    // Array list of items
-                    items: items.map((String items) {
-                      return DropdownMenuItem(
-                        value: items,
-                        child: Text(items),
-                      );
-                    }).toList(),
-                    onChanged: (String? value) {  },
+                  // Initial Value
+                  value: dropdownvalue,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {},
                 ),
               ],
             ),
           ),
-          
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Card(
@@ -83,6 +81,13 @@ class ListDosen extends StatelessWidget {
                       '02240786xx',
                       style: TextStyle(color: Colors.black.withOpacity(0.6)),
                     ),
+                    onTap: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ProfilDosen();
+                      }));
+                      //gunakan navigator untuk panggil RincianFakultas
+                    },
                   ),
                 ],
               ),
