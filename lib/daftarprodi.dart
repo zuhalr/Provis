@@ -60,24 +60,19 @@ class Daftarprodi extends StatelessWidget {
             child: Card(
                 elevation: 5,
                 child: InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return Profilprodi();
-                    }));
-                  },
+                  onTap: () {},
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/fpmipa.jpg",
+                          "assets/images/mat.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "MATEMATIKA",
+                        "Matematika",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -100,68 +95,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "images/fpips.jpg",
+                          "images/pendmat.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "FPIPS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/fpok.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "FPOK",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/fptk.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "FPMIPA",
+                        "Pendidikan Matematika",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -180,7 +119,7 @@ class Daftarprodi extends StatelessWidget {
                   onTap: () {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
-                      return ProfilFakultas();
+                      return Profilprodi();
                     }));
                   },
                   child: Column(
@@ -189,12 +128,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/FIP.jpg",
+                          "assets/images/kom.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "FIP",
+                        "Ilmu Komputer",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -217,68 +156,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/fpbs.jpg",
+                          "assets/images/pendkom.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "FPBS",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/fpeb.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "FPEB",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/fpsd.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "FPSD",
+                        "Pendidikan Ilmu Komputer",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -306,12 +189,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/CIBIRU.jpeg",
+                          "assets/images/fis.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "Kamda Cibiru",
+                        "Fisika",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -334,12 +217,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "images/SUMEDANG.jpg",
+                          "assets/images/pendfis.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "Kamda Sumedang",
+                        "Pendidikan Fisika",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -362,13 +245,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "images/TASIKMALAYA.jpg",
-                          height: 160,
+                          "assets/images/bio.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "Kamda Tasikmalaya",
+                        "Biologi",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -391,12 +273,12 @@ class Daftarprodi extends StatelessWidget {
                       Container(
                         height: 200,
                         child: Image.asset(
-                          "assets/images/PURWAKARTA.jpg",
+                          "assets/images/pendbio.jpg",
                           fit: BoxFit.cover,
                         ),
                       ),
                       Text(
-                        "Kamda Purwakarta",
+                        "Pendidikan Biologi",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: textBlack,
@@ -407,59 +289,6 @@ class Daftarprodi extends StatelessWidget {
                   ),
                 )),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/SERANG.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Kamda Serang",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          // CustomCard(
-          //   title: "FPMIPA",
-          //   image: "assets/images/fpmipa.jpg",
-          // ),
-          // CustomCard(title: "FIP", image: "assets/images/FIP.jpg"),
-          // CustomCard(title: "FPIPS", image: "assets/images/fpips.jpg"),
-          // CustomCard(title: "FPBS", image: "assets/images/fpbs.jpg"),
-          // CustomCard(title: "FPSD", image: "assets/images/fpsd.jpg"),
-          // CustomCard(title: "FPTK", image: "assets/images/fptk.jpg"),
-          // CustomCard(title: "FPOK", image: "assets/images/fpok.jpg"),
-          // CustomCard(title: "FPEB", image: "assets/images/fpeb.jpg"),
-          // CustomCard(
-          //     title: "Kampus Daerah Cibiru",
-          //     image: "assets/images/CIBIRU.jpeg"),
-          // CustomCard(
-          //     title: "Kampus Daerah Sumedang",
-          //     image: "assets/images/SUMEDANG.jpg"),
-          // CustomCard(
-          //     title: "Kampus Daerah Tasikmalaya",
-          //     image: "assets/images/TASIKMALAYA.jpg"),
-          // CustomCard(
-          //     title: "Kampus Daerah Purwakarta",
-          //     image: "assets/images/PURWAKARTA.jpg"),
-          // CustomCard(
-          //     title: "Kampus Daerah Serang", image: "assets/images/SERANG.jpg"),
         ],
       ),
       bottomNavigationBar: BottomAppBar(
