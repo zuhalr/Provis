@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provis/Profil_fakultas.dart';
 import 'package:provis/profil_prodi.dart';
 
 class CustomCard extends StatelessWidget {
@@ -33,7 +34,7 @@ class CustomCard extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context)
                     .push(MaterialPageRoute(builder: (context) {
-                  return Profilprodi();
+                  return ProfilFakultas();
                 }));
               },
               child: Text(title),

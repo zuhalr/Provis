@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 
 import 'package:flutter/material.dart';
+import 'package:provis/Akreditasi.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
+import 'package:provis/list_prestasi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
@@ -86,37 +88,43 @@ class Dashboard extends StatelessWidget {
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
-                        child: Center(
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ListPrestasi();
+                              }));
+                            },
                             child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                "assets/images/todo.png",
-                                width: 64.0,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/todo.png",
+                                    width: 64.0,
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  Text(
+                                    "Prestasi",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    "+2 Items",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w100),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              Text(
-                                "Prestasi",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                "2 Items",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w100),
-                              )
-                            ],
-                          ),
-                        )),
+                            )),
                       ),
                     ),
                     SizedBox(
@@ -127,37 +135,43 @@ class Dashboard extends StatelessWidget {
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
-                        child: Center(
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return ListPrestasi();
+                              }));
+                            },
                             child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                "assets/images/note.png",
-                                width: 64.0,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/note.png",
+                                    width: 64.0,
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  Text(
+                                    "Kerja Sama",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    "+5 Items",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w100),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              Text(
-                                "Kerja Sama",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                "5 Items",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w100),
-                              )
-                            ],
-                          ),
-                        )),
+                            )),
                       ),
                     ),
                   ],
@@ -187,37 +201,43 @@ class Dashboard extends StatelessWidget {
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
-                        child: Center(
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return Fasilitas();
+                              }));
+                            },
                             child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                "assets/images/calendar.png",
-                                width: 64.0,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/calendar.png",
+                                    width: 64.0,
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  Text(
+                                    "Sarana",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    "+2 Items",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w100),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              Text(
-                                "Sarana",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                "2 Items",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w100),
-                              )
-                            ],
-                          ),
-                        )),
+                            )),
                       ),
                     ),
                     SizedBox(
@@ -228,37 +248,43 @@ class Dashboard extends StatelessWidget {
                         elevation: 2.0,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
-                        child: Center(
+                        child: InkWell(
+                            onTap: () {
+                              Navigator.of(context)
+                                  .push(MaterialPageRoute(builder: (context) {
+                                return Akreditasi();
+                              }));
+                            },
                             child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: <Widget>[
-                              Image.asset(
-                                "assets/images/settings.png",
-                                width: 64.0,
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: <Widget>[
+                                  Image.asset(
+                                    "assets/images/settings.png",
+                                    width: 64.0,
+                                  ),
+                                  SizedBox(
+                                    height: 10.0,
+                                  ),
+                                  Text(
+                                    "Akreditasi",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20.0),
+                                  ),
+                                  SizedBox(
+                                    height: 5.0,
+                                  ),
+                                  Text(
+                                    "+3 Items",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w100),
+                                  )
+                                ],
                               ),
-                              SizedBox(
-                                height: 10.0,
-                              ),
-                              Text(
-                                "Akreditasi",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20.0),
-                              ),
-                              SizedBox(
-                                height: 5.0,
-                              ),
-                              Text(
-                                "3 Items",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w100),
-                              )
-                            ],
-                          ),
-                        )),
+                            )),
                       ),
                     ),
                   ],

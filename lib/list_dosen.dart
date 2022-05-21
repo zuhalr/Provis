@@ -86,7 +86,6 @@ class ListDosen extends StatelessWidget {
                           .push(MaterialPageRoute(builder: (context) {
                         return ProfilDosen();
                       }));
-                      //gunakan navigator untuk panggil RincianFakultas
                     },
                   ),
                 ],
