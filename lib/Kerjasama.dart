@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ListPrestasi extends StatelessWidget {
+class ListKerjasama extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text('List Prestasi'),
+        title: const Text('List Kerjasama'),
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
       body: ListView(
@@ -22,11 +22,10 @@ class ListPrestasi extends StatelessWidget {
                 ListTile(
                   // leading: Icon(Icons.arrow_drop_down_circle),
 
-                  title: const Text(
-                      'Juara 1 DIMAS TI Cabang Lomba Game Programming'),
+                  title: const Text('Kerjasama dengan NTU, Singapura'),
                   subtitle: Text(
-                    'Nasional',
-                    style: TextStyle(color: Colors.red.withOpacity(1.0)),
+                    'Mahasiswa yang terlibat adalah Hendi  Yahya,  M. Rifky, Zuhal R., Samuel Nelson, dan M. Agil. ',
+                    style: TextStyle(color: Colors.black.withOpacity(0.8)),
                   ),
                 ),
               ],
@@ -39,10 +38,10 @@ class ListPrestasi extends StatelessWidget {
                 ListTile(
                   // leading: Icon(Icons.arrow_drop_down_circle),
                   leading: Image.asset('images/test.png'),
-                  title: const Text('Juara 1 Gemastik 2022 bidang UI/UX'),
+                  title: const Text('Kerjasama dengan NTU, Singapura'),
                   subtitle: Text(
-                    'Nasional',
-                    style: TextStyle(color: Colors.red.withOpacity(1.0)),
+                    'Mahasiswa yang terlibat adalah Hendi  Yahya,  M. Rifky, Zuhal R., Samuel Nelson, dan M. Agil. ',
+                    style: TextStyle(color: Colors.black.withOpacity(0.8)),
                   ),
                 ),
                 Padding(
@@ -62,10 +61,10 @@ class ListPrestasi extends StatelessWidget {
                 ListTile(
                   // leading: Icon(Icons.arrow_drop_down_circle),
                   leading: Image.asset('images/test.png'),
-                  title: const Text('16 Besar Google Code Jam 2020'),
+                  title: const Text('Kerjasama dengan NTU, Singapura'),
                   subtitle: Text(
-                    'Internasional',
-                    style: TextStyle(color: Colors.red.withOpacity(1.0)),
+                    'Mahasiswa yang terlibat adalah Hendi  Yahya,  M. Rifky, Zuhal R., Samuel Nelson, dan M. Agil. ',
+                    style: TextStyle(color: Colors.black.withOpacity(0.8)),
                   ),
                 ),
                 Padding(

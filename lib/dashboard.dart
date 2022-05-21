@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provis/Akreditasi.dart';
+import 'package:provis/Kerjasama.dart';
 import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
@@ -139,7 +140,7 @@ class Dashboard extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context)
                                   .push(MaterialPageRoute(builder: (context) {
-                                return ListPrestasi();
+                                return ListKerjasama();
                               }));
                             },
                             child: Padding(

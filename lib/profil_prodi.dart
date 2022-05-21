@@ -1,158 +1,157 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new
+// ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables
+
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:provis/Widgets/CustomCard.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
+import 'package:provis/daftarprodi.dart';
+import 'package:provis/dashboard.dart';
+import 'package:provis/editprodi.dart';
+import 'package:provis/list_prestasi.dart';
+import 'package:provis/profil_dosen.dart';
+import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
 import 'list_dosen.dart';
+import 'home.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
-import 'home_view.dart';
-import 'package:provis/addprestasi.dart';
+import 'dashboard.dart';
 
 class Profilprodi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 143, 5, 5),
-        title: Center(
-          child: Text("Profil Prodi",
+        backgroundColor: primary,
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Image.asset(
+            'assets/images/upi.png',
+            height: 25,
+          ),
+          Text("UPI DATA",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
-        ),
-        bottom: AppBar(
-          backgroundColor: Colors.white,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Cari',
-                  prefixIcon: IconButton(
-                    icon: const Icon(Icons.search),
-                    tooltip: 'search',
-                    onPressed: () {
-                      // kalau ditap
-                    },
-                  ),
-                ),
-              ),
+        ]),
+        actions: <Widget>[
+          IconButton(
+            icon: new Icon(Icons.person, color: colorLight),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return ProfilDosen();
+              }));
+            },
+          ),
+        ],
+      ),
+      backgroundColor: colorLight,
+      body: ListView(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(12.0),
+          ),
+          Text(
+            "Ilmu Komputer",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.all(12.0),
+          ),
+          DataTable(
+            columns: <DataColumn>[
+              DataColumn(label: Text("Jumlah Mahasiswa")),
+              DataColumn(label: Text("300")),
+            ],
+            rows: <DataRow>[
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Jumlah Dosen")),
+                  DataCell(Text("20")),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Akreditasi")),
+                  DataCell(Text("A")),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Jenjang")),
+                  DataCell(Text("S1")),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Rasion Dosen / Mahasiswa")),
+                  DataCell(Text("1:15")),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Rata-rata waktu lulus")),
+                  DataCell(Text("4.5 Tahun")),
+                ],
+              ),
+              DataRow(
+                cells: <DataCell>[
+                  DataCell(Text("Riwayat Kerjasama")),
+                  DataCell(Text(" - 2020 UN\n - 2021 UM")),
+                ],
+              ),
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(12.0),
+            height: 60,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                    style: TextButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 143, 5, 5)),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "  List Dosen  ",
+                        style: heading5,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ListDosen();
+                      }));
+                    }),
+                ElevatedButton(
+                    style: TextButton.styleFrom(
+                        backgroundColor: Color.fromARGB(255, 143, 5, 5)),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "List Prestasi",
+                        style: heading5,
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return ListPrestasi();
+                      }));
+                    }),
+              ],
+            ),
+          ),
+        ],
       ),
-      body: Container(
-        child: GridView.count(
-          crossAxisCount: 2,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Jumlah Mahasiswa')),
-                        Container(
-                            padding: EdgeInsets.all(14), child: Text('500')),
-                      ])),
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Jumlah Dosen')),
-                        Container(
-                            padding: EdgeInsets.all(14), child: Text('25')),
-                      ])),
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Jenjang')),
-                        Container(
-                            padding: EdgeInsets.all(14), child: Text('S1')),
-                      ])),
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Rasio Dosen/Mahasiswa')),
-                        Container(
-                            padding: EdgeInsets.all(14), child: Text('1 : 20')),
-                      ])),
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Rata-rata waktu lulus')),
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('4.5 tahun')),
-                      ])),
-              Container(
-                  padding: EdgeInsets.all(14),
-                  color: Color.fromARGB(255, 143, 5, 5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('Riwayat Kerjasama')),
-                        Container(
-                            padding: EdgeInsets.all(14),
-                            child: Text('''2020 - Fasilkom UI
-                  2021 - STEI ITB''')),
-                      ])),
-            ]),
-          ],
-        ),
-      ),
-      //       Container(
-      //             child: Text(
-      //           '''
-      //         Jumlah Mahasiswa
-      //         Jumlah Dosen
-      //         Jenjang
-      //         Rasio Dosen/Mahasiswa
-      //         Rata-rata waktu kelulusan"
-      //         Riwayat Kerjasama''',
-      //           style: TextStyle(fontWeight: FontWeight.bold),
-      //         )),),
-      //       Card(child: Container(child: Text('''
-      //             500
-      //             25
-      //             S1
-      //             1:20
-      //             4.5 tahun
-      //             2020 - Fasilkom UI
-      //             2021 - STEI ITB''')),),
-      //     ],
-      //   ),
-      // ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
         child: new Row(
@@ -176,7 +175,12 @@ class Profilprodi extends StatelessWidget {
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.show_chart),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
+                  }));
+                },
               ),
             ),
             Expanded(
@@ -187,7 +191,7 @@ class Profilprodi extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return HomePage();
+                    return MyHome();
                   }));
                 },
               ),
@@ -213,7 +217,7 @@ class Profilprodi extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Addprestasi(); //ganti aja, ini cuman mau debug doang
+                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),
@@ -224,3 +228,5 @@ class Profilprodi extends StatelessWidget {
     );
   }
 }
+
+void setState(Null Function() param0) {}
