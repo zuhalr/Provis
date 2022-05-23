@@ -179,7 +179,7 @@ class HomePage extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MyHome();
+                    return HomePage();
                   }));
                 },
               ),

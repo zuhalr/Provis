@@ -1,4 +1,13 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/material.dart';
+
+import 'Widgets/theme.dart';
+import 'compare.dart';
+import 'daftarfakultas.dart';
+import 'daftarprodi.dart';
+import 'dashboard.dart';
+import 'home_view.dart';
 
 class ListPrestasi extends StatelessWidget {
   @override
@@ -79,6 +88,79 @@ class ListPrestasi extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: primary,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              //Daftar Fakultas
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home_work),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Daftarfakultas();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Dashboard
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Home
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu Compare
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.compare),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Compare();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu kaprodi (Edit Data Prodi)
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.person),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
+                  }));
+                },
+              ),
+            ),
+          ],
+        ),
       ), //column center
     );
   }

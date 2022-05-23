@@ -4,7 +4,6 @@ import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
 import 'profil_dosen.dart';
-import 'list_kamda.dart';
 import 'home_view.dart';
 
 void main() {
@@ -108,7 +107,7 @@ class MyHome extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return ListKamda();
+                        return Daftarfakultas();
                       }));
                     }),
               ),

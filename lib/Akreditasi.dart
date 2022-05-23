@@ -8,6 +8,7 @@ import 'package:provis/compare.dart';
 import 'package:provis/daftarprodi.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
+import 'package:provis/home_view.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
@@ -109,7 +110,7 @@ class Akreditasi extends StatelessWidget {
             padding: EdgeInsets.all(12.0),
           ),
           Text(
-            "Daftar Akreditasi Fakultas",
+            "Jumlah Akreditasi Prodi/Fakultas",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
@@ -208,7 +209,7 @@ class Akreditasi extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: Column(children: <Widget>[
               Text(
-                "Akreditas Fakultas",
+                "Akreditas Prodi / Fakultas",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, color: textBlack),
               ),
@@ -256,7 +257,7 @@ class Akreditasi extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MyHome();
+                    return HomePage();
                   }));
                 },
               ),

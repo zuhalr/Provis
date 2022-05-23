@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:provis/Akreditasi.dart';
 import 'package:provis/Kerjasama.dart';
-import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
 import 'package:provis/dashboard.dart';

@@ -8,6 +8,7 @@ import 'package:provis/compare.dart';
 import 'package:provis/daftarprodi.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
+import 'package:provis/home_view.dart';
 import 'package:provis/list_prestasi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/addprestasi.dart';
@@ -191,7 +192,7 @@ class Profilprodi extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return MyHome();
+                    return HomePage();
                   }));
                 },
               ),

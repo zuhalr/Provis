@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
-import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';

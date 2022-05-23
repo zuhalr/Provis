@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
 import 'package:provis/Profil_fakultas.dart';
-import 'package:provis/Widgets/CustomCard.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/list_prestasi.dart';
 import 'package:provis/profil_dosen.dart';
