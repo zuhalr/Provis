@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_new
 
 import 'package:flutter/material.dart';
+import 'package:provis/editprodi.dart';
 
 import 'Widgets/theme.dart';
 import 'compare.dart';
@@ -153,7 +154,7 @@ class ListKerjasama extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
+                    return EditProdi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),

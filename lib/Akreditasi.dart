@@ -283,7 +283,7 @@ class Akreditasi extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
-                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
+                    return EditProdi(); //ganti aja, ini cuman mau debug doang
                   }));
                 },
               ),

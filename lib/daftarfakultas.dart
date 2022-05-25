@@ -293,12 +293,7 @@ class Daftarfakultas extends StatelessWidget {
             child: Card(
                 elevation: 5,
                 child: InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return ProfilFakultas();
-                    }));
-                  },
+                  onTap: () {},
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
