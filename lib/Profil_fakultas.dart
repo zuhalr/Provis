@@ -17,8 +17,74 @@ import 'home.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'dashboard.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class ProfilFakultas extends StatelessWidget {
+class IsiDataFakultas {
+  String slug;
+  String name;
+  String url_image;
+  IsiDataFakultas(
+      {required this.name, required this.slug, required this.url_image});
+}
+
+class DataFakultas {
+  List<IsiDataFakultas> ListPop = <IsiDataFakultas>[];
+
+  DataFakultas(Map<String, dynamic> json) {
+    // isi listPop disini
+    var data = json["data"]["fakultas"];
+    // print(data);
+    for (var val in data) {
+      var slug = val["slug"];
+      var name = val["name"];
+      var url_image = val["url_image"];
+      ListPop.add(
+          IsiDataFakultas(slug: slug, name: name, url_image: url_image));
+      // print(val);
+    }
+  }
+  //map dari json ke atribut
+  factory DataFakultas.fromJson(Map<String, dynamic> json) {
+    return DataFakultas(json);
+  }
+}
+
+class ProfilFakultas extends StatefulWidget {
+  const ProfilFakultas({Key? key, required this.slug}) : super(key: key);
+
+  final String slug;
+  @override
+  State<ProfilFakultas> createState() => _ProfilFakultasState();
+}
+
+class _ProfilFakultasState extends State<ProfilFakultas> {
+  late Future<DataFakultas> futureDataFakultas;
+
+  //https://datausa.io/api/data?drilldowns=Nation&measures=Population
+  String url = "http://localhost:3000/fakultas";
+
+  //fetch data
+  Future<DataFakultas> fetchData() async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      // jika server mengembalikan 200 OK (berhasil),
+      // parse json
+      return DataFakultas.fromJson(jsonDecode(response.body));
+    } else {
+      // jika gagal (bukan  200 OK),
+      // lempar exception
+      throw Exception('Gagal load');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureDataFakultas = fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +120,7 @@ class ProfilFakultas extends StatelessWidget {
             padding: EdgeInsets.all(12.0),
           ),
           Text(
-            "Profil FPMIPA",
+            "Profil ${widget.slug}",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
@@ -65,49 +131,72 @@ class ProfilFakultas extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(12.0),
           ),
-          DataTable(
-            columns: <DataColumn>[
-              DataColumn(label: Text("Jumlah Mahasiswa")),
-              DataColumn(label: Text("500")),
-            ],
-            rows: <DataRow>[
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Jumlah Dosen")),
-                  DataCell(Text("450")),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Jumlah Prodi")),
-                  DataCell(Text("9")),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Rasion Dosen / Mahasiswa")),
-                  DataCell(Text("1:20")),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Rata-rata waktu lulus")),
-                  DataCell(Text("4.5 Tahun")),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Riwayat Kerjasama")),
-                  DataCell(Text(" - 2020 UN\n - 2021 UM")),
-                ],
-              ),
-              DataRow(
-                cells: <DataCell>[
-                  DataCell(Text("Fasilitas")),
-                  DataCell(Text(" - Kantin\n - Student Corner")),
-                ],
-              ),
-            ],
+          Center(
+            child: FutureBuilder<DataFakultas>(
+              future: futureDataFakultas,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Center(
+                    //gunakan listview builder
+                    child: ListView.builder(
+                      itemCount: snapshot
+                          .data!.ListPop.length, //asumsikan data ada isi
+                      itemBuilder: (context, index) {
+                        // ignore: dead_code
+                        return DataTable(
+                          columns: <DataColumn>[
+                            DataColumn(label: Text("Jumlah Mahasiswa")),
+                            DataColumn(label: Text("500")),
+                          ],
+                          rows: <DataRow>[
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Jumlah Dosen")),
+                                DataCell(Text("450")),
+                              ],
+                            ),
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Jumlah Prodi")),
+                                DataCell(Text("9")),
+                              ],
+                            ),
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Rasion Dosen / Mahasiswa")),
+                                DataCell(Text("1:20")),
+                              ],
+                            ),
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Rata-rata waktu lulus")),
+                                DataCell(Text("4.5 Tahun")),
+                              ],
+                            ),
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Riwayat Kerjasama")),
+                                DataCell(Text(" - 2020 UN\n - 2021 UM")),
+                              ],
+                            ),
+                            DataRow(
+                              cells: <DataCell>[
+                                DataCell(Text("Fasilitas")),
+                                DataCell(Text(" - Kantin\n - Student Corner")),
+                              ],
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            ),
           ),
           Container(
             padding: EdgeInsets.all(12.0),
@@ -163,10 +252,10 @@ class ProfilFakultas extends StatelessWidget {
                 color: colorLight,
                 icon: Icon(Icons.home_work),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarfakultas();
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
                 },
               ),
             ),

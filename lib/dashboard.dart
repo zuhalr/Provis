@@ -324,10 +324,11 @@ class Dashboard extends StatelessWidget {
                                 ),
                               ),
                               onPressed: () {
-                                Navigator.of(context)
-                                    .push(MaterialPageRoute(builder: (context) {
-                                  return Daftarfakultas();
-                                }));
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DaftarFakultas()),
+                                );
                               }),
                           ElevatedButton(
                               style: TextButton.styleFrom(
@@ -367,10 +368,10 @@ class Dashboard extends StatelessWidget {
                 color: colorLight,
                 icon: Icon(Icons.home_work),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarfakultas();
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
                 },
               ),
             ),
