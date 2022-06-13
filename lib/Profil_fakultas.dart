@@ -23,9 +23,25 @@ import 'dart:convert';
 class IsiDataFakultas {
   String slug;
   String name;
+  int jmlMhs;
+  int jmlDos;
+  int jmlProdi;
+  String wktLulus;
   String url_image;
+  String ratio;
+  String kerjasama;
+  String fasilitas;
   IsiDataFakultas(
-      {required this.name, required this.slug, required this.url_image});
+      {required this.name,
+      required this.slug,
+      required this.jmlMhs,
+      required this.jmlDos,
+      required this.jmlProdi,
+      required this.wktLulus,
+      required this.ratio,
+      required this.kerjasama,
+      required this.fasilitas,
+      required this.url_image});
 }
 
 class DataFakultas {
@@ -38,9 +54,25 @@ class DataFakultas {
     for (var val in data) {
       var slug = val["slug"];
       var name = val["name"];
+      var jmlMhs = val["jml_mahasiswa"];
+      var jmlDos = val["jml_dosen"];
+      var jmlProdi = val["jml_prodi"];
+      var wktLulus = val["wkt_lulus"];
       var url_image = val["url_image"];
-      ListPop.add(
-          IsiDataFakultas(slug: slug, name: name, url_image: url_image));
+      var ratio = val["ratio"];
+      var fasilitas = val["fasilitas"];
+      var kerjasama = val["kerjasama"];
+      ListPop.add(IsiDataFakultas(
+          slug: slug,
+          name: name,
+          jmlMhs: jmlMhs,
+          jmlDos: jmlDos,
+          jmlProdi: jmlProdi,
+          wktLulus: wktLulus,
+          ratio: ratio,
+          kerjasama: kerjasama,
+          fasilitas: fasilitas,
+          url_image: url_image));
       // print(val);
     }
   }
@@ -146,51 +178,65 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi
                         itemBuilder: (context, index) {
+                          if (snapshot.data!.ListPop[index].slug == "fpmipa") {
+                            return DataTable(
+                              columns: <DataColumn>[
+                                DataColumn(label: Text("Jumlah Mahasiswa")),
+                                DataColumn(
+                                    label: Text(snapshot
+                                        .data!.ListPop[index].jmlMhs
+                                        .toString())),
+                              ],
+                              rows: <DataRow>[
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Jumlah Dosen")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].jmlDos
+                                        .toString())),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Jumlah Prodi")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].jmlProdi
+                                        .toString())),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Rasion Dosen / Mahasiswa")),
+                                    DataCell(Text(
+                                        snapshot.data!.ListPop[index].ratio)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Rata-rata waktu lulus")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].wktLulus)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Riwayat Kerjasama")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].kerjasama)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Fasilitas")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].fasilitas)),
+                                  ],
+                                ),
+                              ],
+                            );
+                          }
+                          return Container();
                           // ignore: dead_code
-                          return DataTable(
-                            columns: <DataColumn>[
-                              DataColumn(label: Text("Jumlah Mahasiswa")),
-                              DataColumn(label: Text("500")),
-                            ],
-                            rows: <DataRow>[
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Jumlah Dosen")),
-                                  DataCell(Text("450")),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Jumlah Prodi")),
-                                  DataCell(Text("9")),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Rasion Dosen / Mahasiswa")),
-                                  DataCell(Text("1:20")),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Rata-rata waktu lulus")),
-                                  DataCell(Text("4.5 Tahun")),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Riwayat Kerjasama")),
-                                  DataCell(Text(" - 2020 UN\n - 2021 UM")),
-                                ],
-                              ),
-                              DataRow(
-                                cells: <DataCell>[
-                                  DataCell(Text("Fasilitas")),
-                                  DataCell(Text(" - Kantin\n - Student Corner")),
-                                ],
-                              ),
-                            ],
-                          );
                         },
                       ),
                     ),
