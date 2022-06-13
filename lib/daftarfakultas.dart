@@ -123,9 +123,13 @@ class _DaftarFakultasState extends State<DaftarFakultas> {
             if (snapshot.hasData) {
               return Center(
                 //gunakan listview builder
-                child: ListView.builder(
+                child: GridView.builder(
                   itemCount:
                       snapshot.data!.ListPop.length, //asumsikan data ada isi
+                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1,
+                  ),
                   itemBuilder: (context, index) {
                     return Container(
                         decoration: BoxDecoration(border: Border.all()),
