@@ -115,6 +115,8 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
       ),
       backgroundColor: colorLight,
       body: ListView(
+        // scrollDirection: Axis.vertical,
+        // shrinkWrap: true,
         children: [
           Padding(
             padding: EdgeInsets.all(12.0),
@@ -138,56 +140,59 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                 if (snapshot.hasData) {
                   return Center(
                     //gunakan listview builder
-                    child: ListView.builder(
-                      itemCount: snapshot
-                          .data!.ListPop.length, //asumsikan data ada isi
-                      itemBuilder: (context, index) {
-                        // ignore: dead_code
-                        return DataTable(
-                          columns: <DataColumn>[
-                            DataColumn(label: Text("Jumlah Mahasiswa")),
-                            DataColumn(label: Text("500")),
-                          ],
-                          rows: <DataRow>[
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Jumlah Dosen")),
-                                DataCell(Text("450")),
-                              ],
-                            ),
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Jumlah Prodi")),
-                                DataCell(Text("9")),
-                              ],
-                            ),
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Rasion Dosen / Mahasiswa")),
-                                DataCell(Text("1:20")),
-                              ],
-                            ),
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Rata-rata waktu lulus")),
-                                DataCell(Text("4.5 Tahun")),
-                              ],
-                            ),
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Riwayat Kerjasama")),
-                                DataCell(Text(" - 2020 UN\n - 2021 UM")),
-                              ],
-                            ),
-                            DataRow(
-                              cells: <DataCell>[
-                                DataCell(Text("Fasilitas")),
-                                DataCell(Text(" - Kantin\n - Student Corner")),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
+                    child: Container(
+                      height: 500,
+                      child: ListView.builder(
+                        itemCount: snapshot
+                            .data!.ListPop.length, //asumsikan data ada isi
+                        itemBuilder: (context, index) {
+                          // ignore: dead_code
+                          return DataTable(
+                            columns: <DataColumn>[
+                              DataColumn(label: Text("Jumlah Mahasiswa")),
+                              DataColumn(label: Text("500")),
+                            ],
+                            rows: <DataRow>[
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Jumlah Dosen")),
+                                  DataCell(Text("450")),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Jumlah Prodi")),
+                                  DataCell(Text("9")),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Rasion Dosen / Mahasiswa")),
+                                  DataCell(Text("1:20")),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Rata-rata waktu lulus")),
+                                  DataCell(Text("4.5 Tahun")),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Riwayat Kerjasama")),
+                                  DataCell(Text(" - 2020 UN\n - 2021 UM")),
+                                ],
+                              ),
+                              DataRow(
+                                cells: <DataCell>[
+                                  DataCell(Text("Fasilitas")),
+                                  DataCell(Text(" - Kantin\n - Student Corner")),
+                                ],
+                              ),
+                            ],
+                          );
+                        },
+                      ),
                     ),
                   );
                 } else if (snapshot.hasError) {
