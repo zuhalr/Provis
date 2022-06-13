@@ -61,10 +61,11 @@ class MyHome extends StatelessWidget {
                 child: ElevatedButton(
                     child: Text('Daftar Fakultas'),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Daftarfakultas();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DaftarFakultas()),
+                      );
                     }),
               ),
               Padding(
@@ -105,10 +106,11 @@ class MyHome extends StatelessWidget {
                 child: ElevatedButton(
                     child: Text('Daftar Kampus Daerah'),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Daftarfakultas();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DaftarFakultas()),
+                      );
                     }),
               ),
               Padding(

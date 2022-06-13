@@ -229,10 +229,10 @@ class Akreditasi extends StatelessWidget {
                 color: colorLight,
                 icon: Icon(Icons.home_work),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarfakultas();
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
                 },
               ),
             ),
