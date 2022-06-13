@@ -73,10 +73,10 @@ class MyHome extends StatelessWidget {
                 child: ElevatedButton(
                     child: Text('Fasilitas'),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Fasilitas();
-                      }));
+                      // Navigator.of(context)
+                      //     .push(MaterialPageRoute(builder: (context) {
+                      //   return Fasilitas();
+                      // }));
                     }),
               ),
               Padding(
