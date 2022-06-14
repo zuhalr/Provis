@@ -159,8 +159,7 @@ class _DaftarFakultasState extends State<DaftarFakultas> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width: 100,
-                                            height: 100,
+                                            height: 150,
                                             decoration: BoxDecoration(
                                               borderRadius:
                                                   BorderRadius.circular(10),
