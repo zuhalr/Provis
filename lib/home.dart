@@ -52,7 +52,9 @@ class MyHome extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return ListDosen();
+                        return DaftarDosen(
+                          slug: 's1-pendidikan-ilmu-komputer',
+                        );
                       }));
                     }),
               ),

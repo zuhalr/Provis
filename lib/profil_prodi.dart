@@ -268,7 +268,10 @@ class _ProfilProdiState extends State<ProfilProdi> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ListDosen()),
+                        MaterialPageRoute(
+                            builder: (context) => DaftarDosen(
+                                  slug: widget.slug,
+                                )),
                       );
                     }),
                 // ElevatedButton(
