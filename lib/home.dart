@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provis/list_prestasi.dart';
-import 'list_dosen.dart';
+import 'daftardosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
 import 'profil_dosen.dart';

@@ -7,7 +7,7 @@ import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
 import 'package:provis/profil_prodi.dart';
 import 'daftarfakultas.dart';
-import 'list_dosen.dart';
+import 'daftardosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
@@ -21,8 +21,12 @@ class IsiDataProdi {
   String slug;
   String name;
   String url_image;
+  String fakultas;
   IsiDataProdi(
-      {required this.name, required this.slug, required this.url_image});
+      {required this.name,
+      required this.slug,
+      required this.fakultas,
+      required this.url_image});
 }
 
 class DataProdi {
@@ -30,13 +34,15 @@ class DataProdi {
 
   DataProdi(Map<String, dynamic> json) {
     // isi listPop disini
-    var data = json["data"]["Prodi"];
+    var data = json["data"]["prodi"];
     // print(data);
     for (var val in data) {
       var slug = val["slug"];
       var name = val["name"];
+      var fakultas = val["fakultas"];
       var url_image = val["url_image"];
-      ListPop.add(IsiDataProdi(slug: slug, name: name, url_image: url_image));
+      ListPop.add(IsiDataProdi(
+          slug: slug, name: name, fakultas: fakultas, url_image: url_image));
       // print(val);
     }
   }
@@ -47,8 +53,8 @@ class DataProdi {
 }
 
 class DaftarProdi extends StatefulWidget {
-  const DaftarProdi({Key? key}) : super(key: key);
-
+  const DaftarProdi({Key? key, required this.slug}) : super(key: key);
+  final String slug;
   @override
   State<DaftarProdi> createState() => _DaftarProdiState();
 }
@@ -57,7 +63,7 @@ class _DaftarProdiState extends State<DaftarProdi> {
   late Future<DataProdi> futureDataProdi;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://localhost:3000/Prodi";
+  String url = "http://localhost:3000/prodi";
 
   //fetch data
   Future<DataProdi> fetchData() async {
@@ -86,7 +92,7 @@ class _DaftarProdiState extends State<DaftarProdi> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Daftar Prodi",
+          child: Text("Daftar Prodi ${widget.slug}",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -130,57 +136,65 @@ class _DaftarProdiState extends State<DaftarProdi> {
                     childAspectRatio: 1,
                   ),
                   itemBuilder: (context, index) {
-                    return Container(
-                        decoration: BoxDecoration(border: Border.all()),
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Card(
-                                    elevation: 5,
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Profilprodi()),
-                                        );
-                                      },
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 100,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(
-                                                image: NetworkImage(snapshot
-                                                    .data!
-                                                    .ListPop[index]
-                                                    .url_image),
-                                                fit: BoxFit.cover,
+                    if (snapshot.data!.ListPop[index].fakultas == widget.slug) {
+                      return Container(
+                          decoration: BoxDecoration(border: Border.all()),
+                          padding: const EdgeInsets.all(14),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 10),
+                                  child: Card(
+                                      elevation: 5,
+                                      child: InkWell(
+                                        onTap: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ProfilProdi(
+                                                        slug: snapshot
+                                                            .data!
+                                                            .ListPop[index]
+                                                            .slug)),
+                                          );
+                                        },
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 100,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                image: DecorationImage(
+                                                  image: NetworkImage(snapshot
+                                                      .data!
+                                                      .ListPop[index]
+                                                      .url_image),
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          Text(
-                                            snapshot.data!.ListPop[index].name,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: textBlack,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                            ]));
+                                            Text(
+                                              snapshot
+                                                  .data!.ListPop[index].name,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: textBlack,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20.0),
+                                            ),
+                                          ],
+                                        ),
+                                      )),
+                                ),
+                              ]));
+                    }
+                    return Container();
                   },
                 ),
               );
@@ -205,7 +219,7 @@ class _DaftarProdiState extends State<DaftarProdi> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => DaftarProdi()),
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
                   );
                 },
               ),

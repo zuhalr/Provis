@@ -5,7 +5,7 @@ import 'package:provis/addprestasi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
 import 'daftarfakultas.dart';
-import 'list_dosen.dart';
+import 'daftardosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
 import 'home_view.dart';
