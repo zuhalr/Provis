@@ -216,10 +216,10 @@ class Profilprodi extends StatelessWidget {
                 color: colorLight,
                 icon: Icon(Icons.person),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
                 },
               ),
             ),

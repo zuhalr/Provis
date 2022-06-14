@@ -178,7 +178,8 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi
                         itemBuilder: (context, index) {
-                          if (snapshot.data!.ListPop[index].slug == "fpmipa") {
+                          if (snapshot.data!.ListPop[index].slug ==
+                              widget.slug) {
                             return DataTable(
                               columns: <DataColumn>[
                                 DataColumn(label: Text("Jumlah Mahasiswa")),
@@ -266,10 +267,11 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Daftarprodi();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DaftarFakultas()),
+                      );
                     }),
                 ElevatedButton(
                     style: TextButton.styleFrom(
@@ -355,10 +357,10 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                 color: colorLight,
                 icon: Icon(Icons.person),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
-                  }));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
                 },
               ),
             ),
