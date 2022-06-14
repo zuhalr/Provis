@@ -1,135 +1,332 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables
 
-class ProfilDosen extends StatelessWidget {
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:provis/Widgets/theme.dart';
+import 'package:provis/compare.dart';
+import 'package:provis/daftarprodi.dart';
+import 'package:provis/dashboard.dart';
+import 'package:provis/editprodi.dart';
+import 'package:provis/home_view.dart';
+import 'package:provis/profil_dosen.dart';
+import 'package:provis/addprestasi.dart';
+import 'daftarfakultas.dart';
+import 'daftardosen.dart';
+import 'home.dart';
+import 'fasilitas.dart';
+import 'profil_dosen.dart';
+import 'dashboard.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+class IsiDataDosen {
+  String slug;
+  String name;
+  String jabatan;
+  String pendidikan;
+  String status;
+  String riwPend;
+  String url_image;
+  String riwPeng;
+  String prestasi;
+  IsiDataDosen(
+      {required this.name,
+      required this.slug,
+      required this.jabatan,
+      required this.pendidikan,
+      required this.status,
+      required this.riwPend,
+      required this.riwPeng,
+      required this.prestasi,
+      required this.url_image});
+}
+
+class DataDosen {
+  List<IsiDataDosen> ListPop = <IsiDataDosen>[];
+
+  DataDosen(Map<String, dynamic> json) {
+    // isi listPop disini
+    var data = json["data"]["dosen"];
+    // print(data);
+    for (var val in data) {
+      var slug = val["slug"];
+      var name = val["name"];
+      var jabatan = val["jabatan"];
+      var pendidikan = val["pendidikan"];
+      var status = val["status"];
+      var riwPend = val["riwayat_pendidikan"];
+      var url_image = val["url_image"];
+      var riwPeng = val["riwayat_pengajaran"];
+      var prestasi = val["riwayat_prestasi"];
+      ListPop.add(IsiDataDosen(
+          slug: slug,
+          name: name,
+          jabatan: jabatan,
+          pendidikan: pendidikan,
+          status: status,
+          riwPend: riwPend,
+          riwPeng: riwPeng,
+          prestasi: prestasi,
+          url_image: url_image));
+      // print(val);
+    }
+  }
+  //map dari json ke atribut
+  factory DataDosen.fromJson(Map<String, dynamic> json) {
+    return DataDosen(json);
+  }
+}
+
+class ProfilDosen extends StatefulWidget {
+  const ProfilDosen({Key? key, required this.slug}) : super(key: key);
+
+  final String slug;
+  @override
+  State<ProfilDosen> createState() => _ProfilDosenState();
+}
+
+class _ProfilDosenState extends State<ProfilDosen> {
+  late Future<DataDosen> futureDataDosen;
+
+  //https://datausa.io/api/data?drilldowns=Nation&measures=Population
+  String url = "http://localhost:3000/dosen";
+
+  //fetch data
+  Future<DataDosen> fetchData() async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      // jika server mengembalikan 200 OK (berhasil),
+      // parse json
+      return DataDosen.fromJson(jsonDecode(response.body));
+    } else {
+      // jika gagal (bukan  200 OK),
+      // lempar exception
+      throw Exception('Gagal load');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureDataDosen = fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profil Dosen'),
-        backgroundColor: Color.fromARGB(255, 143, 5, 5),
+        backgroundColor: primary,
+        title:
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+          Image.asset(
+            'assets/images/upi.png',
+            height: 25,
+          ),
+          Text("UPI DATA",
+              style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white)),
+        ]),
+        actions: <Widget>[
+          IconButton(
+            icon: new Icon(Icons.person, color: colorLight),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return ProfilDosen(
+                  slug: widget.slug,
+                );
+              }));
+            },
+          ),
+        ],
       ),
+      backgroundColor: colorLight,
       body: ListView(
-        children:[
+        // scrollDirection: Axis.vertical,
+        // shrinkWrap: true,
+        children: [
           Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 100,
-                  child: ClipOval(
-                      child: Image.asset("Assets/Images/profile.png",
-                    ),
-                  )
-            ),
+            padding: EdgeInsets.all(12.0),
           ),
-          const Center(
-            child: Text(
-              "John Doe",style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          const Center(
-            child: Text(
-              "02240786xx"
+          Text(
+            "Profil ${widget.slug}",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: const Text(
-                "Jabatan : Dosen \nPendidikan : S3 \nStatus Ikatan Kerja : Tetap"
+            padding: EdgeInsets.all(12.0),
+          ),
+          Container(
+            height: 150,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage('http://localhost:3000/img/profile.png'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-                color: Color.fromARGB(255, 153, 21, 11),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      // leading: Icon(Icons.arrow_drop_down_circle),
-                      title: const Text('Riwayat Pendidikan', style: TextStyle(color: Colors.white)),
-                      // subtitle: const Text(
-                      //   'Secondary Text',
-                      //    style: TextStyle(color: Colors.white),
-                      // ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          '- S1 Universitas Pendidikan Indonesia \n- S2 Universitas Pendidikan Indonesia \n- S3 Universitas Pendidikan Indonesia',
-                           style: TextStyle(color: Colors.white),
-                        ),
+          Center(
+            child: FutureBuilder<DataDosen>(
+              future: futureDataDosen,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Center(
+                    //gunakan listview builder
+                    child: Container(
+                      height: 500,
+                      child: ListView.builder(
+                        itemCount: snapshot
+                            .data!.ListPop.length, //asumsikan data ada isi
+                        itemBuilder: (context, index) {
+                          if (snapshot.data!.ListPop[index].slug ==
+                              widget.slug) {
+                            return DataTable(
+                              columns: <DataColumn>[
+                                DataColumn(label: Text("Jabatan")),
+                                DataColumn(
+                                    label: Text(snapshot
+                                        .data!.ListPop[index].jabatan
+                                        .toString())),
+                              ],
+                              rows: <DataRow>[
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Pendidikan")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].pendidikan
+                                        .toString())),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Status Ikatan Kerja")),
+                                    DataCell(Text(
+                                        snapshot.data!.ListPop[index].status)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Riwayat Pengajaran")),
+                                    DataCell(Text(
+                                        snapshot.data!.ListPop[index].riwPeng)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Riwayat Pendidikan")),
+                                    DataCell(Text(
+                                        snapshot.data!.ListPop[index].riwPend)),
+                                  ],
+                                ),
+                                DataRow(
+                                  cells: <DataCell>[
+                                    DataCell(Text("Riwayat Prestasi")),
+                                    DataCell(Text(snapshot
+                                        .data!.ListPop[index].prestasi)),
+                                  ],
+                                ),
+                              ],
+                            );
+                          }
+                          return Container();
+                          // ignore: dead_code
+                        },
                       ),
                     ),
-                    
-                  ],
-                ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-                color: Color.fromARGB(255, 153, 21, 11),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      // leading: Icon(Icons.arrow_drop_down_circle),
-                      title: const Text('Riwayat Pengajaran', style: TextStyle(color: Colors.white)),
-                      // subtitle: const Text(
-                      //   'Secondary Text',
-                      //    style: TextStyle(color: Colors.white),
-                      // ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          '-  \n -  \n - ',
-                           style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    
-                  ],
-                ),
+        ],
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: primary,
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              //Daftar Dosen
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home_work),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
+                },
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Card(
-                color: Color.fromARGB(255, 153, 21, 11),
-                clipBehavior: Clip.antiAlias,
-                child: Column(
-                  children: [
-                    ListTile(
-                      // leading: Icon(Icons.arrow_drop_down_circle),
-                      title: const Text('Riwayat Prestasi', style: TextStyle(color: Colors.white)),
-                      // subtitle: const Text(
-                      //   'Secondary Text',
-                      //    style: TextStyle(color: Colors.white),
-                      // ),
-                    ),
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Padding(
-                        padding: const EdgeInsets.all(5),
-                        child: Text(
-                          '-  \n -  \n - ',
-                           style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                    
-                  ],
-                ),
+            Expanded(
+              //Dashboard
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.show_chart),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Dashboard(); //sementara jadi halaman list page yang belum nyambung
+                  }));
+                },
+              ),
             ),
-          ),
-        ]
+            Expanded(
+              //Home
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.home),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return HomePage();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu Compare
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.compare),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return Compare();
+                  }));
+                },
+              ),
+            ),
+            Expanded(
+              //Menu kaDosen (Edit Data Dosen)
+              child: IconButton(
+                color: colorLight,
+                icon: Icon(Icons.person),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 }
+
+void setState(Null Function() param0) {}

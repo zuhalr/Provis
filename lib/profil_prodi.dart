@@ -139,7 +139,7 @@ class _ProfilProdiState extends State<ProfilProdi> {
             icon: new Icon(Icons.person, color: colorLight),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return ProfilDosen();
+                return DaftarFakultas();
               }));
             },
           ),

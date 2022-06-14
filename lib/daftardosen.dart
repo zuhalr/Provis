@@ -143,7 +143,10 @@ class _DaftarDosenState extends State<DaftarDosen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    ProfilDosen()),
+                                                    ProfilDosen(
+                                                      slug: snapshot.data!
+                                                          .ListPop[index].name,
+                                                    )),
                                           );
                                         },
                                         child: Column(

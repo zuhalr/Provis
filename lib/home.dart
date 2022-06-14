@@ -88,7 +88,7 @@ class MyHome extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
-                        return ProfilDosen();
+                        return DaftarFakultas();
                       }));
                     }),
               ),

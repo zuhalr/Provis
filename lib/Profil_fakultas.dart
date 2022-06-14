@@ -139,7 +139,7 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
             icon: new Icon(Icons.person, color: colorLight),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return ProfilDosen();
+                return DaftarFakultas();
               }));
             },
           ),
