@@ -178,7 +178,7 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi
                         itemBuilder: (context, index) {
-                          if (snapshot.data!.ListPop[index].slug == "fpmipa") {
+                          if (snapshot.data!.ListPop[index].slug == widget.slug) {
                             return Column(
                               children: [
                                 DataTable(
