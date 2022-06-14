@@ -133,18 +133,18 @@ class _DaftarProdiState extends State<DaftarProdi> {
                       snapshot.data!.ListPop.length, //asumsikan data ada isi
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 1,
+                    childAspectRatio: 2,
                   ),
                   itemBuilder: (context, index) {
                     if (snapshot.data!.ListPop[index].fakultas == widget.slug) {
                       return Container(
                           decoration: BoxDecoration(border: Border.all()),
-                          padding: const EdgeInsets.all(14),
+                          padding: const EdgeInsets.all(1),
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 2),
                                   child: Card(
                                       elevation: 5,
                                       child: InkWell(
