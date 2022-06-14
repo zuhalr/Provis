@@ -151,7 +151,7 @@ class _DaftarFakultasState extends State<DaftarFakultas> {
                                                       slug: snapshot
                                                           .data!
                                                           .ListPop[index]
-                                                          .slug)),
+                                                          .name)),
                                         );
                                       },
                                       child: Column(
