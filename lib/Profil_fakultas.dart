@@ -252,10 +252,17 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Daftarprodi();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                DaftarProdi(
+                                    slug: snapshot
+                                        .data!
+                                        .ListPop[index]
+                                        .slug)
+                                        ),
+                      );
                     }),
                 ElevatedButton(
                     style: TextButton.styleFrom(
@@ -365,10 +372,10 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                 color: colorLight,
                 icon: Icon(Icons.person),
                 onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
-                    return Daftarprodi(); //ganti aja, ini cuman mau debug doang
-                  }));
+                  // Navigator.of(context)
+                  //     .push(MaterialPageRoute(builder: (context) {
+                  //   return Daftarprodi(); //ganti aja, ini cuman mau debug doang
+                  // }));
                 },
               ),
             ),

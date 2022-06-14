@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
-import 'package:provis/Profil_fakultas.dart';
+import 'package:provis/Profil_Prodi.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/list_prestasi.dart';
 import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
 import 'package:provis/profil_prodi.dart';
-import 'daftarfakultas.dart';
+import 'daftarProdi.dart';
 import 'list_dosen.dart';
 import 'fasilitas.dart';
 import 'profil_dosen.dart';
@@ -14,15 +14,84 @@ import 'home_view.dart';
 import 'package:provis/addprestasi.dart';
 import 'package:provis/editprodi.dart';
 import 'dashboard.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class Daftarprodi extends StatelessWidget {
+class IsiDataProdi {
+  String slug;
+  String name;
+  String url_image;
+  String fakultas;
+  IsiDataProdi(
+      {required this.name, required this.slug, required this.url_image, required this.fakultas});
+}
+
+class DataProdi {
+  List<IsiDataProdi> ListPop = <IsiDataProdi>[];
+
+  DataProdi(Map<String, dynamic> json) {
+    // isi listPop disini
+    var data = json["data"]["prodi"];
+    // print(data);
+    for (var val in data) {
+      var slug = val["slug"];
+      var name = val["name"];
+      var fakultas = val["fakultas"];
+      var url_image = val["url_image"];
+      ListPop.add(
+          IsiDataProdi(fakultas: fakultas, slug: slug, name: name, url_image: url_image));
+      // print(val);
+    }
+  }
+  //map dari json ke atribut
+  factory DataProdi.fromJson(Map<String, dynamic> json) {
+    return DataProdi(json);
+  }
+}
+
+class DaftarProdi extends StatefulWidget {
+  const DaftarProdi({Key? key, required this.slug}) : super(key: key);
+
+  final String slug;
+  @override
+  State<DaftarProdi> createState() => _DaftarProdiState();
+}
+
+class _DaftarProdiState extends State<DaftarProdi> {
+
+  late Future<DataProdi> futureDataProdi;
+
+  //https://datausa.io/api/data?drilldowns=Nation&measures=Population
+  String url = "http://localhost:3000/prodi";
+
+  //fetch data
+  Future<DataProdi> fetchData() async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      // jika server mengembalikan 200 OK (berhasil),
+      // parse json
+      return DataProdi.fromJson(jsonDecode(response.body));
+    } else {
+      // jika gagal (bukan  200 OK),
+      // lempar exception
+      throw Exception('Gagal load');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureDataProdi = fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Daftar Fakultas",
+          child: Text("Daftar Prodi ${widget.slug}",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -51,239 +120,90 @@ class Daftarprodi extends StatelessWidget {
           ),
         ),
       ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/mat.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Matematika",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
+      body: Center(
+        child: FutureBuilder<DataProdi>(
+          future: futureDataProdi,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Center(
+                //gunakan listview builder
+                child: GridView.builder(
+                  itemCount:
+                      snapshot.data!.ListPop.length, //asumsikan data ada isi
+                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 1,
                   ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "images/pendmat.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Pendidikan Matematika",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return Profilprodi();
-                    }));
-                  },
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/kom.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Ilmu Komputer",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/pendkom.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Pendidikan Ilmu Komputer",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/fis.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Fisika",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/pendfis.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Pendidikan Fisika",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/bio.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Biologi",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Card(
-                elevation: 5,
-                child: InkWell(
-                  onTap: () {},
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 200,
-                        child: Image.asset(
-                          "assets/images/pendbio.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Text(
-                        "Pendidikan Biologi",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: textBlack,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
-                      ),
-                    ],
-                  ),
-                )),
-          ),
-        ],
+                  itemBuilder: (context, index) {
+                    if (snapshot.data!.ListPop[index].fakultas == widget.slug) {
+                    return Container(
+                        decoration: BoxDecoration(border: Border.all()),
+                        padding: const EdgeInsets.all(14),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 10),
+                                child: Card(
+                                    elevation: 5,
+                                    child: InkWell(
+                                      onTap: () {
+                                        // Navigator.push(
+                                        //   context,
+                                        //   MaterialPageRoute(
+                                        //       builder: (context) =>
+                                        //           ProfilProdi(
+                                        //               slug: snapshot
+                                        //                   .data!
+                                        //                   .ListPop[index]
+                                        //                   .slug)),
+                                        // );
+                                      },
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 100,
+                                            height: 100,
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              image: DecorationImage(
+                                                image: NetworkImage(snapshot
+                                                    .data!
+                                                    .ListPop[index]
+                                                    .url_image),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            snapshot.data!.ListPop[index].name,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: textBlack,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0),
+                                          ),
+                                        ],
+                                      ),
+                                    )),
+                              ),
+                            ]
+                            )
+                      );
+                  } return Container();
+                  }
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
@@ -291,15 +211,15 @@ class Daftarprodi extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              //Daftar Fakultas
+              //Daftar Prodi
               child: IconButton(
                 color: colorLight,
                 icon: Icon(Icons.home_work),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DaftarFakultas()),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(builder: (context) => DaftarProdi()),
+                  // );
                 },
               ),
             ),
