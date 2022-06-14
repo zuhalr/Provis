@@ -9,8 +9,75 @@ import 'daftarfakultas.dart';
 import 'daftarprodi.dart';
 import 'dashboard.dart';
 import 'home_view.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-class Fasilitas extends StatelessWidget {
+class IsiDataFasilitas {
+  String slug;
+  String name;
+  String url_image;
+  IsiDataFasilitas(
+      {required this.name, required this.slug, required this.url_image});
+}
+
+class DataFasilitas {
+  List<IsiDataFasilitas> ListPop = <IsiDataFasilitas>[];
+
+  DataFasilitas(Map<String, dynamic> json) {
+    // isi listPop disini
+    var data = json["data"]["fasilitas"];
+    // print(data);
+    for (var val in data) {
+      var slug = val["fakultas"];
+      var name = val["name"];
+      var url_image = val["url_image"];
+      ListPop.add(
+          IsiDataFasilitas(slug: slug, name: name, url_image: url_image));
+      // print(val);
+    }
+  }
+  //map dari json ke atribut
+  factory DataFasilitas.fromJson(Map<String, dynamic> json) {
+    return DataFasilitas(json);
+  }
+}
+
+class DaftarFasilitas extends StatefulWidget {
+  const DaftarFasilitas({Key? key, required this.slug}) : super(key: key);
+
+  final String slug;
+
+  @override
+  State<DaftarFasilitas> createState() => _DaftarFasilitasState();
+}
+
+class _DaftarFasilitasState extends State<DaftarFasilitas> {
+  late Future<DataFasilitas> futureDataFasilitas;
+
+  //https://datausa.io/api/data?drilldowns=Nation&measures=Population
+  String url = "http://localhost:3000/fasilitas";
+
+  //fetch data
+  Future<DataFasilitas> fetchData() async {
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      // jika server mengembalikan 200 OK (berhasil),
+      // parse json
+      return DataFasilitas.fromJson(jsonDecode(response.body));
+    } else {
+      // jika gagal (bukan  200 OK),
+      // lempar exception
+      throw Exception('Gagal load');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    futureDataFasilitas = fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -19,60 +86,56 @@ class Fasilitas extends StatelessWidget {
         title: const Text('Fasilitas'),
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
-      body: ListView(children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                Image.asset('assets/images/gymnasium.jpg'),
-                ListTile(
-                  // leading: Icon(Icons.arrow_drop_down_circle),
-                  title: const Text('Gymnasium UPI'),
-                  subtitle: Text(
-                    'Fasilitas Olahraga & Gedung Serbaguna',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.all(16.0),
-                //   child: Text(
-                //     'Gedung gymnasium sebagai center atau pusat dari kegiatan kelembagaan seperti penerimaan mahasiswa baru atau wisudaan.Serta gedung Gymnasium biasa digunakan Untuk kepentingan perkuliahan, kegiatan olahraga maupun acara-acara kemahasiswaan.',
-                //     style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                //   ),
-                // ),
-              ],
-            ),
-          ),
+      body: Center(
+        child: FutureBuilder<DataFasilitas>(
+          future: futureDataFasilitas,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Center(
+                //gunakan listview builder
+                child: ListView.builder(
+                    itemCount:
+                        snapshot.data!.ListPop.length, //asumsikan data ada isi
+                    itemBuilder: (context, index) {
+                      if (snapshot.data!.ListPop[index].slug == widget.slug) {
+                        return Padding(
+                            padding: const EdgeInsets.all(5.0),
+                            child: Card(
+                                clipBehavior: Clip.antiAlias,
+                                child: Column(children: [
+                                  InkWell(
+                                      splashColor: Colors.blue.withAlpha(30),
+                                      child: Container(
+                                        width: 1000,
+                                        height: 100,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          image: DecorationImage(
+                                            image: NetworkImage(snapshot.data!
+                                                .ListPop[index].url_image),
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      )),
+                                  ListTile(
+                                    // leading: Icon(Icons.arrow_drop_down_circle),
+                                    title: Text(
+                                        snapshot.data!.ListPop[index].name),
+                                  )
+                                ])));
+                      }
+                      return Container();
+                    }),
+              );
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            child: Column(
-              children: [
-                Image.asset('assets/images/poliklinik.jpg'),
-                ListTile(
-                  // leading: Icon(Icons.arrow_drop_down_circle),
-                  title: const Text('Poliklinik UPI'),
-                  subtitle: Text(
-                    'Fasilitas Kesehatan',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                  ),
-                ),
-                // Padding(
-                //   padding: const EdgeInsets.all(16.0),
-                //   child: Text(
-                //     desc',
-                //     style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                //   ),
-                // ),
-              ],
-            ),
-          ),
-        ),
-      ]),
+      ),
       bottomNavigationBar: BottomAppBar(
         color: primary,
         child: new Row(

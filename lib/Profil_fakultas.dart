@@ -286,10 +286,13 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Fasilitas();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DaftarFasilitas(
+                                  slug: widget.slug,
+                                )),
+                      );
                     }),
               ],
             ),
