@@ -203,10 +203,10 @@ class Dashboard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8.0)),
                         child: InkWell(
                             onTap: () {
-                              Navigator.of(context)
-                                  .push(MaterialPageRoute(builder: (context) {
-                                return Fasilitas();
-                              }));
+                              // Navigator.of(context)
+                              //     .push(MaterialPageRoute(builder: (context) {
+                              //   return Fasilitas();
+                              // }));
                             },
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),

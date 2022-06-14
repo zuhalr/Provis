@@ -178,78 +178,64 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi
                         itemBuilder: (context, index) {
-                          if (snapshot.data!.ListPop[index].slug == "fpmipa") {
-                            return DataTable(
-                              columns: <DataColumn>[
-                                DataColumn(label: Text("Jumlah Mahasiswa")),
-                                DataColumn(
-                                    label: Text(snapshot
-                                        .data!.ListPop[index].jmlMhs
-                                        .toString())),
-                              ],
-                              rows: <DataRow>[
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Jumlah Dosen")),
-                                    DataCell(Text(snapshot
-                                        .data!.ListPop[index].jmlDos
-                                        .toString())),
+                          if (snapshot.data!.ListPop[index].slug == widget.slug) {
+                            return Column(
+                              children: [
+                                DataTable(
+                                  columns: <DataColumn>[
+                                    DataColumn(label: Text("Jumlah Mahasiswa")),
+                                    DataColumn(
+                                        label: Text(snapshot
+                                            .data!.ListPop[index].jmlMhs
+                                            .toString())),
                                   ],
-                                ),
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Jumlah Prodi")),
-                                    DataCell(Text(snapshot
-                                        .data!.ListPop[index].jmlProdi
-                                        .toString())),
+                                  rows: <DataRow>[
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Jumlah Dosen")),
+                                        DataCell(Text(snapshot
+                                            .data!.ListPop[index].jmlDos
+                                            .toString())),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Jumlah Prodi")),
+                                        DataCell(Text(snapshot
+                                            .data!.ListPop[index].jmlProdi
+                                            .toString())),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Rasion Dosen / Mahasiswa")),
+                                        DataCell(Text(
+                                            snapshot.data!.ListPop[index].ratio)),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Rata-rata waktu lulus")),
+                                        DataCell(Text(snapshot
+                                            .data!.ListPop[index].wktLulus)),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Riwayat Kerjasama")),
+                                        DataCell(Text(snapshot
+                                            .data!.ListPop[index].kerjasama)),
+                                      ],
+                                    ),
+                                    DataRow(
+                                      cells: <DataCell>[
+                                        DataCell(Text("Fasilitas")),
+                                        DataCell(Text(snapshot
+                                            .data!.ListPop[index].fasilitas)),
+                                      ],
+                                    ),
                                   ],
-                                ),
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Rasion Dosen / Mahasiswa")),
-                                    DataCell(Text(
-                                        snapshot.data!.ListPop[index].ratio)),
-                                  ],
-                                ),
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Rata-rata waktu lulus")),
-                                    DataCell(Text(snapshot
-                                        .data!.ListPop[index].wktLulus)),
-                                  ],
-                                ),
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Riwayat Kerjasama")),
-                                    DataCell(Text(snapshot
-                                        .data!.ListPop[index].kerjasama)),
-                                  ],
-                                ),
-                                DataRow(
-                                  cells: <DataCell>[
-                                    DataCell(Text("Fasilitas")),
-                                    DataCell(Text(snapshot
-                                        .data!.ListPop[index].fasilitas)),
-                                  ],
-                                ),
-                              ],
-                            );
-                          }
-                          return Container();
-                          // ignore: dead_code
-                        },
-                      ),
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return Text('${snapshot.error}');
-                }
-                // By default, show a loading spinner.
-                return const CircularProgressIndicator();
-              },
-            ),
-          ),
-          Container(
+                                ),Container(
             padding: EdgeInsets.all(12.0),
             height: 60,
             child: Row(
@@ -282,14 +268,38 @@ class _ProfilFakultasState extends State<ProfilFakultas> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Fasilitas();
-                      }));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                Fasilitas(
+                                    slug: snapshot
+                                        .data!
+                                        .ListPop[index]
+                                        .slug)),
+                      );
                     }),
               ],
             ),
           ),
+                              ],
+                            );
+                          }
+                          return Container();
+                          // ignore: dead_code
+                        },
+                      ),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                // By default, show a loading spinner.
+                return const CircularProgressIndicator();
+              },
+            ),
+          ),
+          
         ],
       ),
       bottomNavigationBar: BottomAppBar(
