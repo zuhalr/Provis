@@ -1,17 +1,8 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
-import 'package:provis/Profil_Prodi.dart';
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/list_prestasi.dart';
-import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
-import 'package:provis/profil_prodi.dart';
-import 'daftarProdi.dart';
-import 'list_dosen.dart';
-import 'fasilitas.dart';
-import 'profil_dosen.dart';
 import 'home_view.dart';
-import 'package:provis/addprestasi.dart';
 import 'package:provis/editprodi.dart';
 import 'dashboard.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +14,10 @@ class IsiDataProdi {
   String url_image;
   String fakultas;
   IsiDataProdi(
-      {required this.name, required this.slug, required this.url_image, required this.fakultas});
+      {required this.name,
+      required this.slug,
+      required this.url_image,
+      required this.fakultas});
 }
 
 class DataProdi {
@@ -38,8 +32,8 @@ class DataProdi {
       var name = val["name"];
       var fakultas = val["fakultas"];
       var url_image = val["url_image"];
-      ListPop.add(
-          IsiDataProdi(fakultas: fakultas, slug: slug, name: name, url_image: url_image));
+      ListPop.add(IsiDataProdi(
+          fakultas: fakultas, slug: slug, name: name, url_image: url_image));
       // print(val);
     }
   }
@@ -58,7 +52,6 @@ class DaftarProdi extends StatefulWidget {
 }
 
 class _DaftarProdiState extends State<DaftarProdi> {
-
   late Future<DataProdi> futureDataProdi;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
@@ -128,74 +121,73 @@ class _DaftarProdiState extends State<DaftarProdi> {
               return Center(
                 //gunakan listview builder
                 child: GridView.builder(
-                  itemCount:
-                      snapshot.data!.ListPop.length, //asumsikan data ada isi
-                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1,
-                  ),
-                  itemBuilder: (context, index) {
-                    if (snapshot.data!.ListPop[index].fakultas == widget.slug) {
-                    return Container(
-                        decoration: BoxDecoration(border: Border.all()),
-                        padding: const EdgeInsets.all(14),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 10),
-                                child: Card(
-                                    elevation: 5,
-                                    child: InkWell(
-                                      onTap: () {
-                                        // Navigator.push(
-                                        //   context,
-                                        //   MaterialPageRoute(
-                                        //       builder: (context) =>
-                                        //           ProfilProdi(
-                                        //               slug: snapshot
-                                        //                   .data!
-                                        //                   .ListPop[index]
-                                        //                   .slug)),
-                                        // );
-                                      },
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 100,
-                                            height: 100,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              image: DecorationImage(
-                                                image: NetworkImage(snapshot
-                                                    .data!
-                                                    .ListPop[index]
-                                                    .url_image),
-                                                fit: BoxFit.cover,
+                    itemCount:
+                        snapshot.data!.ListPop.length, //asumsikan data ada isi
+                    gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1,
+                    ),
+                    itemBuilder: (context, index) {
+                      if (snapshot.data!.ListPop[index].fakultas ==
+                          widget.slug) {
+                        return Container(
+                            decoration: BoxDecoration(border: Border.all()),
+                            padding: const EdgeInsets.all(14),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: Card(
+                                        elevation: 5,
+                                        child: InkWell(
+                                          onTap: () {
+                                            // Navigator.push(
+                                            //   context,
+                                            //   MaterialPageRoute(
+                                            //       builder: (context) =>
+                                            //           ProfilProdi(
+                                            //               slug: snapshot
+                                            //                   .data!
+                                            //                   .ListPop[index]
+                                            //                   .slug)),
+                                            // );
+                                          },
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                height: 150,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                  image: DecorationImage(
+                                                    image: NetworkImage(snapshot
+                                                        .data!
+                                                        .ListPop[index]
+                                                        .url_image),
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                              Text(
+                                                snapshot
+                                                    .data!.ListPop[index].name,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: textBlack,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 20.0),
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            snapshot.data!.ListPop[index].name,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: textBlack,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 20.0),
-                                          ),
-                                        ],
-                                      ),
-                                    )),
-                              ),
-                            ]
-                            )
-                      );
-                  } return Container();
-                  }
-                ),
+                                        )),
+                                  ),
+                                ]));
+                      }
+                      return Container();
+                    }),
               );
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
