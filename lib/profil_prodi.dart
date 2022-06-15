@@ -173,7 +173,7 @@ class _ProfilProdiState extends State<ProfilProdi> {
                   return Center(
                     //gunakan listview builder
                     child: Container(
-                      height: 500,
+                      height: 400,
                       child: ListView.builder(
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi

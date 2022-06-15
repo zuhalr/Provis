@@ -83,7 +83,7 @@ class _DaftarFasilitasState extends State<DaftarFasilitas> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Fasilitas'),
+        title: Text('Fasilitas ${widget.slug}'),
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
       ),
       body: Center(

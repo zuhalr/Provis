@@ -207,7 +207,7 @@ class Dashboard extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => DaftarFasilitas(
-                                          slug: 'upi',
+                                          slug: 'UPI',
                                         )),
                               );
                             },
