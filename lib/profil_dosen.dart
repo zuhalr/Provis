@@ -51,7 +51,7 @@ class DataDosen {
     // print(data);
     for (var val in data) {
       var slug = val["slug"];
-      var name = val["name"];
+      var name = val["nama"];
       var jabatan = val["jabatan"];
       var pendidikan = val["pendidikan"];
       var status = val["status"];
@@ -186,7 +186,7 @@ class _ProfilDosenState extends State<ProfilDosen> {
                         itemCount: snapshot
                             .data!.ListPop.length, //asumsikan data ada isi
                         itemBuilder: (context, index) {
-                          if (snapshot.data!.ListPop[index].slug ==
+                          if (snapshot.data!.ListPop[index].name ==
                               widget.slug) {
                             return DataTable(
                               columns: <DataColumn>[
