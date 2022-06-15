@@ -93,28 +93,28 @@ class _DaftarFakultasState extends State<DaftarFakultas> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
         ),
-        bottom: AppBar(
-          backgroundColor: Colors.white,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Cari',
-                  prefixIcon: IconButton(
-                    icon: const Icon(Icons.search),
-                    tooltip: 'search',
-                    onPressed: () {
-                      // kalau ditap
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
+        // bottom: AppBar(
+        //   backgroundColor: Colors.white,
+        //   title: Container(
+        //     width: double.infinity,
+        //     height: 40,
+        //     color: Colors.white,
+        //     child: Center(
+        //       child: TextField(
+        //         decoration: InputDecoration(
+        //           hintText: 'Cari',
+        //           prefixIcon: IconButton(
+        //             icon: const Icon(Icons.search),
+        //             tooltip: 'search',
+        //             onPressed: () {
+        //               // kalau ditap
+        //             },
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ),
       body: Center(
         child: FutureBuilder<DataFakultas>(

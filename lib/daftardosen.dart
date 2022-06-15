@@ -16,9 +16,10 @@ import 'dart:convert';
 class IsiDataDosen {
   String slug;
   String name;
+  String jabatan;
   String url_image;
   IsiDataDosen(
-      {required this.name, required this.slug, required this.url_image});
+      {required this.name, required this.jabatan, required this.slug, required this.url_image});
 }
 
 class DataDosen {
@@ -31,8 +32,9 @@ class DataDosen {
     for (var val in data) {
       var slug = val["slug"];
       var name = val["nama"];
+      var jabatan= val["jabatan"];
       var url_image = val["url_image"];
-      ListPop.add(IsiDataDosen(slug: slug, name: name, url_image: url_image));
+      ListPop.add(IsiDataDosen(slug: slug, name: name, jabatan: jabatan, url_image: url_image));
       // print(val);
     }
   }
@@ -76,6 +78,17 @@ class _DaftarDosenState extends State<DaftarDosen> {
     futureDataDosen = fetchData();
   }
 
+  // Initial Selected Value
+  String dropdownvalue = '↑ Nama';
+
+  // List of items in our dropdown menu
+  var items = [
+    '↑ Nama',
+    '↓ Nama',
+    '↑ Jabatan',
+    '↓ Jabatan',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,112 +101,159 @@ class _DaftarDosenState extends State<DaftarDosen> {
                   fontWeight: FontWeight.bold,
                   color: Colors.white)),
         ),
-        bottom: AppBar(
-          backgroundColor: Colors.white,
-          title: Container(
-            width: double.infinity,
-            height: 40,
-            color: Colors.white,
-            child: Center(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Cari',
-                  prefixIcon: IconButton(
-                    icon: const Icon(Icons.search),
-                    tooltip: 'search',
-                    onPressed: () {
-                      // kalau ditap
-                    },
-                  ),
+        // bottom: AppBar(
+        //   backgroundColor: Colors.white,
+        //   title: Container(
+        //     width: double.infinity,
+        //     height: 40,
+        //     color: Colors.white,
+        //     child: Center(
+        //       child: TextField(
+        //         decoration: InputDecoration(
+        //           hintText: 'Cari',
+        //           prefixIcon: IconButton(
+        //             icon: const Icon(Icons.search),
+        //             tooltip: 'search',
+        //             onPressed: () {
+        //               // kalau ditap
+        //             },
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+      ),
+      body: Center(
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+              cursorColor: Theme.of(context).cursorColor,
+              initialValue: 'Input text',
+              maxLength: 50,
+              decoration: const InputDecoration(
+                icon: Icon(Icons.search),
+                labelText: 'Pencarian',
+                labelStyle: TextStyle(
+                  color: Color(0xFF6200EE),
                 ),
+                helperText: 'Masukkan Nama Dosen',
+                // suffixIcon: Icon(
+                //   Icons.check_circle,
+                // ),
+                border: OutlineInputBorder(),
               ),
             ),
           ),
-        ),
-      ),
-      body: Center(
-        child: FutureBuilder<DataDosen>(
-          future: futureDataDosen,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Center(
-                //gunakan listview builder
-                child: ListView.builder(
-                  itemCount:
-                      snapshot.data!.ListPop.length, //asumsikan data ada isi
-                  // gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                  //   crossAxisCount: 2,
-                  //   childAspectRatio: 1,
-                  // ),
-                  itemBuilder: (context, index) {
-                    if (snapshot.data!.ListPop[index].slug == widget.slug) {
-                      return Container(
-                          decoration: BoxDecoration(border: Border.all()),
-                          padding: const EdgeInsets.all(1),
-                          child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 2),
-                                  child: Card(
-                                      elevation: 5,
-                                      child: InkWell(
-                                        onTap: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ProfilDosen(
-                                                      slug: snapshot.data!
-                                                          .ListPop[index].name,
-                                                    )),
-                                          );
-                                        },
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Container(
-                                              width: 100,
-                                              height: 100,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                                image: DecorationImage(
-                                                  image: NetworkImage(snapshot
-                                                      .data!
-                                                      .ListPop[index]
-                                                      .url_image),
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                            ),
-                                            Text(
-                                              snapshot
-                                                  .data!.ListPop[index].name,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: textBlack,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.0),
-                                            ),
-                                          ],
-                                        ),
-                                      )),
-                                ),
-                              ]));
-                    } else {
-                      return Container(width: 0.0, height: 0.0);
-                    }
-                  },
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text('Urut Berdasarkan :'),
+                DropdownButton(
+                  // Initial Value
+                  value: dropdownvalue,
+
+                  // Down Arrow Icon
+                  icon: const Icon(Icons.keyboard_arrow_down),
+
+                  // Array list of items
+                  items: items.map((String items) {
+                    return DropdownMenuItem(
+                      value: items,
+                      child: Text(items),
+                    );
+                  }).toList(),
+                  onChanged: (String? value) {},
                 ),
-              );
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
+              ],
+            ),
+          ),
+            Container(
+              child: FutureBuilder<DataDosen>(
+                future: futureDataDosen,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Center(
+                      //gunakan listview builder
+                      child: ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount:
+                            snapshot.data!.ListPop.length, //asumsikan data ada isi
+                        // gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                        //   crossAxisCount: 2,
+                        //   childAspectRatio: 1,
+                        // ),
+                        itemBuilder: (context, index) {
+                          if (snapshot.data!.ListPop[index].slug == widget.slug) {
+                            return Container(
+                                // decoration: BoxDecoration(border: Border.all()),
+                                padding: const EdgeInsets.all(1),
+                                child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Card(
+                                        child: ListTile(
+                                                                          // leading: Icon(Icons.arrow_drop_down_circle),
+                                                                          leading: Flexible(
+                                        child: Container(
+                                                        width: 100,
+                                                        height: 100,
+                                                        decoration: BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius.circular(10),
+                                                          image: DecorationImage(
+                                                            image: NetworkImage(snapshot
+                                                                .data!
+                                                                .ListPop[index]
+                                                                .url_image),
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                                          ),
+                                                                          title: Text(
+                                                      snapshot
+                                                          .data!.ListPop[index].name,
+                                                    
+                                                    ),
+                                                                          subtitle: Text(
+                                        // "Test",
+                                        snapshot .data!.ListPop[index].jabatan,
+                                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
+                                                                          ),
+                                                                          onTap: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            ProfilDosen(
+                                                              slug: snapshot.data!
+                                                                  .ListPop[index].name,
+                                                            )),
+                                                  );
+                                                },
+                                                                ),
+                                      )]));
+                                      
+                          } else {
+                            return Container(width: 0.0, height: 0.0);
+                          }
+                        },
+                      ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  // By default, show a loading spinner.
+                  return const CircularProgressIndicator();
+                },
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: BottomAppBar(
