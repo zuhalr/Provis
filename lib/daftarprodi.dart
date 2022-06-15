@@ -128,13 +128,13 @@ class _DaftarProdiState extends State<DaftarProdi> {
             if (snapshot.hasData) {
               return Center(
                 //gunakan listview builder
-                child: GridView.builder(
+                child: ListView.builder(
                   itemCount:
                       snapshot.data!.ListPop.length, //asumsikan data ada isi
-                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1,
-                  ),
+                  // gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                  //   crossAxisCount: 2,
+                  //   childAspectRatio: 1,
+                  // ),
                   itemBuilder: (context, index) {
                     if (snapshot.data!.ListPop[index].fakultas == widget.slug) {
                       return Container(
