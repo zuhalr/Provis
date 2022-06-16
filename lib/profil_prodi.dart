@@ -94,7 +94,7 @@ class _ProfilProdiState extends State<ProfilProdi> {
   late Future<DataProdi> futureDataProdi;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://localhost:3000/prodi";
+  String url = "http://165.22.109.98:9998/prodi";
 
   //fetch data
   Future<DataProdi> fetchData() async {

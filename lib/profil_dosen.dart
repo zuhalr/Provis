@@ -90,7 +90,7 @@ class _ProfilDosenState extends State<ProfilDosen> {
   late Future<DataDosen> futureDataDosen;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://localhost:3000/dosen";
+  String url = "http://165.22.109.98:9998/dosen";
 
   //fetch data
   Future<DataDosen> fetchData() async {

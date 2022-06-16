@@ -55,7 +55,7 @@ class _DaftarFasilitasState extends State<DaftarFasilitas> {
   late Future<DataFasilitas> futureDataFasilitas;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://localhost:3000/fasilitas";
+  String url = "http://165.22.109.98:9998/fasilitas";
 
   //fetch data
   Future<DataFasilitas> fetchData() async {

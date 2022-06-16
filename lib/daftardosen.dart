@@ -19,7 +19,10 @@ class IsiDataDosen {
   String jabatan;
   String url_image;
   IsiDataDosen(
-      {required this.name, required this.jabatan, required this.slug, required this.url_image});
+      {required this.name,
+      required this.jabatan,
+      required this.slug,
+      required this.url_image});
 }
 
 class DataDosen {
@@ -32,9 +35,10 @@ class DataDosen {
     for (var val in data) {
       var slug = val["slug"];
       var name = val["nama"];
-      var jabatan= val["jabatan"];
+      var jabatan = val["jabatan"];
       var url_image = val["url_image"];
-      ListPop.add(IsiDataDosen(slug: slug, name: name, jabatan: jabatan, url_image: url_image));
+      ListPop.add(IsiDataDosen(
+          slug: slug, name: name, jabatan: jabatan, url_image: url_image));
       // print(val);
     }
   }
@@ -55,7 +59,7 @@ class _DaftarDosenState extends State<DaftarDosen> {
   late Future<DataDosen> futureDataDosen;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://localhost:3000/dosen";
+  String url = "http://165.22.109.98:9998/dosen";
 
   //fetch data
   Future<DataDosen> fetchData() async {
@@ -130,47 +134,47 @@ class _DaftarDosenState extends State<DaftarDosen> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
-              cursorColor: Theme.of(context).cursorColor,
-              initialValue: 'Input text',
-              maxLength: 50,
-              decoration: const InputDecoration(
-                icon: Icon(Icons.search),
-                labelText: 'Pencarian',
-                labelStyle: TextStyle(
-                  color: Color(0xFF6200EE),
+                cursorColor: Theme.of(context).cursorColor,
+                initialValue: 'Input text',
+                maxLength: 50,
+                decoration: const InputDecoration(
+                  icon: Icon(Icons.search),
+                  labelText: 'Pencarian',
+                  labelStyle: TextStyle(
+                    color: Color(0xFF6200EE),
+                  ),
+                  helperText: 'Masukkan Nama Dosen',
+                  // suffixIcon: Icon(
+                  //   Icons.check_circle,
+                  // ),
+                  border: OutlineInputBorder(),
                 ),
-                helperText: 'Masukkan Nama Dosen',
-                // suffixIcon: Icon(
-                //   Icons.check_circle,
-                // ),
-                border: OutlineInputBorder(),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: [
-                Text('Urut Berdasarkan :'),
-                DropdownButton(
-                  // Initial Value
-                  value: dropdownvalue,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Text('Urut Berdasarkan :'),
+                  DropdownButton(
+                    // Initial Value
+                    value: dropdownvalue,
 
-                  // Down Arrow Icon
-                  icon: const Icon(Icons.keyboard_arrow_down),
+                    // Down Arrow Icon
+                    icon: const Icon(Icons.keyboard_arrow_down),
 
-                  // Array list of items
-                  items: items.map((String items) {
-                    return DropdownMenuItem(
-                      value: items,
-                      child: Text(items),
-                    );
-                  }).toList(),
-                  onChanged: (String? value) {},
-                ),
-              ],
+                    // Array list of items
+                    items: items.map((String items) {
+                      return DropdownMenuItem(
+                        value: items,
+                        child: Text(items),
+                      );
+                    }).toList(),
+                    onChanged: (String? value) {},
+                  ),
+                ],
+              ),
             ),
-          ),
             Container(
               child: FutureBuilder<DataDosen>(
                 future: futureDataDosen,
@@ -181,14 +185,15 @@ class _DaftarDosenState extends State<DaftarDosen> {
                       child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
-                        itemCount:
-                            snapshot.data!.ListPop.length, //asumsikan data ada isi
+                        itemCount: snapshot
+                            .data!.ListPop.length, //asumsikan data ada isi
                         // gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                         //   crossAxisCount: 2,
                         //   childAspectRatio: 1,
                         // ),
                         itemBuilder: (context, index) {
-                          if (snapshot.data!.ListPop[index].slug == widget.slug) {
+                          if (snapshot.data!.ListPop[index].slug ==
+                              widget.slug) {
                             return Container(
                                 // decoration: BoxDecoration(border: Border.all()),
                                 padding: const EdgeInsets.all(1),
@@ -197,48 +202,51 @@ class _DaftarDosenState extends State<DaftarDosen> {
                                     children: [
                                       Card(
                                         child: ListTile(
-                                                                          // leading: Icon(Icons.arrow_drop_down_circle),
-                                                                          leading: Flexible(
-                                        child: Container(
-                                                        width: 100,
-                                                        height: 100,
-                                                        decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              BorderRadius.circular(10),
-                                                          image: DecorationImage(
-                                                            image: NetworkImage(snapshot
-                                                                .data!
-                                                                .ListPop[index]
-                                                                .url_image),
-                                                            fit: BoxFit.cover,
-                                                          ),
-                                                        ),
-                                                      ),
-                                                                          ),
-                                                                          title: Text(
-                                                      snapshot
-                                                          .data!.ListPop[index].name,
-                                                    
-                                                    ),
-                                                                          subtitle: Text(
-                                        // "Test",
-                                        snapshot .data!.ListPop[index].jabatan,
-                                        style: TextStyle(color: Colors.black.withOpacity(0.6)),
-                                                                          ),
-                                                                          onTap: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ProfilDosen(
-                                                              slug: snapshot.data!
-                                                                  .ListPop[index].name,
-                                                            )),
-                                                  );
-                                                },
-                                                                ),
-                                      )]));
-                                      
+                                          // leading: Icon(Icons.arrow_drop_down_circle),
+                                          leading: Flexible(
+                                            child: Container(
+                                              width: 100,
+                                              height: 100,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                image: DecorationImage(
+                                                  image: NetworkImage(snapshot
+                                                      .data!
+                                                      .ListPop[index]
+                                                      .url_image),
+                                                  fit: BoxFit.cover,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          title: Text(
+                                            snapshot.data!.ListPop[index].name,
+                                          ),
+                                          subtitle: Text(
+                                            // "Test",
+                                            snapshot
+                                                .data!.ListPop[index].jabatan,
+                                            style: TextStyle(
+                                                color: Colors.black
+                                                    .withOpacity(0.6)),
+                                          ),
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ProfilDosen(
+                                                        slug: snapshot
+                                                            .data!
+                                                            .ListPop[index]
+                                                            .name,
+                                                      )),
+                                            );
+                                          },
+                                        ),
+                                      )
+                                    ]));
                           } else {
                             return Container(width: 0.0, height: 0.0);
                           }
