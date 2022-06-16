@@ -5,17 +5,10 @@ import 'package:provis/Akreditasi.dart';
 import 'package:provis/Kerjasama.dart';
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
-import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
 import 'package:provis/list_prestasi.dart';
-import 'package:provis/profil_dosen.dart';
-import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
-import 'daftardosen.dart';
-import 'home.dart';
 import 'fasilitas.dart';
-import 'profil_dosen.dart';
-import 'dashboard.dart';
 import 'home_view.dart';
 
 class Dashboard extends StatelessWidget {
