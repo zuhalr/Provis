@@ -53,6 +53,7 @@ class MyHome extends StatelessWidget {
                           .push(MaterialPageRoute(builder: (context) {
                         return DaftarDosen(
                           slug: 's1-pendidikan-ilmu-komputer',
+                          name: 'Ilmu Komputer',
                         );
                       }));
                     }),

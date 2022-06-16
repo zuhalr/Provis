@@ -47,8 +47,10 @@ class DataDosen {
 }
 
 class DaftarDosen extends StatefulWidget {
-  const DaftarDosen({Key? key, required this.slug}) : super(key: key);
+  const DaftarDosen({Key? key, required this.slug, required this.name})
+      : super(key: key);
   final String slug;
+  final String name;
   @override
   State<DaftarDosen> createState() => _DaftarDosenState();
 }
@@ -97,7 +99,7 @@ class _DaftarDosenState extends State<DaftarDosen> {
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 143, 5, 5),
         title: Center(
-          child: Text("Daftar Dosen ${widget.slug}",
+          child: Text("Daftar Dosen ${widget.name}",
               style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
