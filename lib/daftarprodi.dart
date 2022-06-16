@@ -148,8 +148,10 @@ class _DaftarProdiState extends State<DaftarProdi> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => ProfilProdi(
-                                                slug: snapshot.data!
-                                                    .ListPop[index].slug)),
+                                                slug: snapshot
+                                                    .data!.ListPop[index].slug,
+                                                name: snapshot.data!
+                                                    .ListPop[index].name)),
                                       );
                                     },
                                     splashColor: Colors.blue.withAlpha(30),

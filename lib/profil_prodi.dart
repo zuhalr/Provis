@@ -83,9 +83,11 @@ class DataProdi {
 }
 
 class ProfilProdi extends StatefulWidget {
-  const ProfilProdi({Key? key, required this.slug}) : super(key: key);
+  const ProfilProdi({Key? key, required this.slug, required this.name})
+      : super(key: key);
 
   final String slug;
+  final String name;
   @override
   State<ProfilProdi> createState() => _ProfilProdiState();
 }
@@ -154,7 +156,7 @@ class _ProfilProdiState extends State<ProfilProdi> {
             padding: EdgeInsets.all(12.0),
           ),
           Text(
-            "Profil ${widget.slug}",
+            "Profil ${widget.name}",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: Colors.black,
