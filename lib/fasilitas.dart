@@ -2,11 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:provis/editprodi.dart';
-
 import 'Widgets/theme.dart';
 import 'compare.dart';
 import 'daftarfakultas.dart';
-import 'daftarprodi.dart';
 import 'dashboard.dart';
 import 'home_view.dart';
 import 'package:http/http.dart' as http;

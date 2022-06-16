@@ -1,21 +1,13 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
-import 'package:provis/daftarprodi.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
 import 'package:provis/home_view.dart';
-import 'package:provis/profil_dosen.dart';
-import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
-import 'daftardosen.dart';
-import 'home.dart';
-import 'fasilitas.dart';
-import 'profil_dosen.dart';
 import 'dashboard.dart';
 
 class Akreditasi extends StatelessWidget {

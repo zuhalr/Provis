@@ -5,16 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:provis/Widgets/theme.dart';
 import 'package:provis/compare.dart';
-import 'package:provis/daftarprodi.dart';
 import 'package:provis/dashboard.dart';
 import 'package:provis/editprodi.dart';
-import 'package:provis/profil_dosen.dart';
-import 'package:provis/addprestasi.dart';
 import 'daftarfakultas.dart';
-import 'daftardosen.dart';
-import 'home.dart';
-import 'fasilitas.dart';
-import 'profil_dosen.dart';
 import 'dashboard.dart';
 
 final List<String> imgList = [

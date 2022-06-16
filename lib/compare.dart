@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/profil_dosen.dart';
 import 'daftarfakultas.dart';
-import 'daftardosen.dart';
-import 'fasilitas.dart';
-import 'profil_dosen.dart';
 import 'home_view.dart';
 import 'dashboard.dart';
 import 'package:provis/editprodi.dart';

@@ -3,7 +3,6 @@ import 'package:provis/list_prestasi.dart';
 import 'daftardosen.dart';
 import 'fasilitas.dart';
 import 'daftarfakultas.dart';
-import 'profil_dosen.dart';
 import 'home_view.dart';
 
 void main() {

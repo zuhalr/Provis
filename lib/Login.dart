@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provis/home.dart';
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/Widgets/custom_checkbox.dart';
 import 'package:provis/home_view.dart';
 
 class LoginPage extends StatefulWidget {

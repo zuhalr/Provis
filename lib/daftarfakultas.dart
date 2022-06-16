@@ -2,16 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provis/Profil_fakultas.dart';
 import 'package:provis/Widgets/theme.dart';
-import 'package:provis/list_prestasi.dart';
-import 'package:provis/profil_dosen.dart';
 import 'package:provis/compare.dart';
-import 'package:provis/profil_prodi.dart';
-import 'daftarfakultas.dart';
-import 'daftardosen.dart';
-import 'fasilitas.dart';
-import 'profil_dosen.dart';
 import 'home_view.dart';
-import 'package:provis/addprestasi.dart';
 import 'package:provis/editprodi.dart';
 import 'dashboard.dart';
 import 'package:http/http.dart' as http;
