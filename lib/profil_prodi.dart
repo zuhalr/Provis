@@ -265,6 +265,7 @@ class _ProfilProdiState extends State<ProfilProdi> {
                         MaterialPageRoute(
                             builder: (context) => DaftarDosen(
                                   slug: widget.slug,
+                                  name: widget.name,
                                 )),
                       );
                     }),
