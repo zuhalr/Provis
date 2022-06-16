@@ -163,16 +163,6 @@ class _ProfilDosenState extends State<ProfilDosen> {
           Padding(
             padding: EdgeInsets.all(12.0),
           ),
-          Container(
-            height: 150,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: NetworkImage('http://localhost:3000/img/profile.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
           Center(
             child: FutureBuilder<DataDosen>(
               future: futureDataDosen,
