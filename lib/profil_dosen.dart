@@ -90,7 +90,7 @@ class _ProfilDosenState extends State<ProfilDosen> {
   late Future<DataDosen> futureDataDosen;
 
   //https://datausa.io/api/data?drilldowns=Nation&measures=Population
-  String url = "http://165.22.109.98:9998/dosen";
+  String url = "http://localhost:3000/dosen";
 
   //fetch data
   Future<DataDosen> fetchData() async {
@@ -162,6 +162,16 @@ class _ProfilDosenState extends State<ProfilDosen> {
           ),
           Padding(
             padding: EdgeInsets.all(12.0),
+          ),
+          Container(
+            height: 150,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image:
+                    NetworkImage('http://165.22.109.98:9998/img/profile.png'),
+              ),
+            ),
           ),
           Center(
             child: FutureBuilder<DataDosen>(
